@@ -1,0 +1,237 @@
+<app-header-page *ngIf="!isResult" title="Cálculo de Juros Compostos"
+  description="Os juros compostos crescem de forma exponencial, pois sua base de cálculo é sempre em cima do montante anterior. Faça esse cálculo financeiro de forma simples utilizando nossa calculadora!"></app-header-page>
+
+<main *ngIf="!isResult" class="calc">
+  <h3 class="title">Simulador de Juros Compostos</h3>
+  <div class="form-container">
+    <mat-form-field floatLabel="always">
+      <mat-label>Valor inicial</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="initialValue"
+        mask="separator.2" thousandSeparator=".">
+      <span matTextPrefix>R$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Valor mensal</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="monthValue"
+        mask="separator.2" thousandSeparator=".">
+      <span matTextPrefix>R$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" ngbDropdown>
+      <mat-label>Taxa de juros anual (%)</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="rate" mask="separator.2"
+        thousandSeparator=".">
+      <span matTextPrefix>%&nbsp;</span>
+      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle matSuffix>
+        {{rateTime}}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="rateTime = 'Anual'">Anual</button>
+        <button ngbDropdownItem (click)="rateTime = 'Mensal'" (click)="CalcularTaxadeJuros()">Mensal</button>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" ngbDropdown>
+      <mat-label>Período de tempo (anos)</mat-label>
+      <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="period">
+      <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle matSuffix>
+        {{periodTime}}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="periodTime = 'Anos'">Anos</button>
+        <button ngbDropdownItem (click)="periodTime = 'Meses'">Meses</button>
+      </div>
+    </mat-form-field>
+
+
+    <div class="buttons">
+      <button (click)="CalcularJurosCompostos()">Calcular</button>
+      <button (click)="Limpar()">Limpar</button>
+    </div>
+  </div>
+</main>
+
+
+<section *ngIf="!isResult" class="blog">
+  <article>
+    <h1>Guia para Utilizar a Calculadora de Juros Compostos</h1>
+    <p>Siga as etapas a seguir para usar nossa calculadora de juros compostos:</p>
+    <ol>
+      <li>Preencha o campo de valor inicial;</li>
+      <li>Insira o valor mensal (esse valor será somado ao final de cada ciclo);</li>
+      <li>Especifique a taxa de juros anual ou mensal;</li>
+      <li>Informe o período desejado em meses ou anos;</li>
+      <li>Clique no botão "Calcular" e confira o resultado.</li>
+    </ol>
+    <p>Percebeu como é fácil? Agora você está pronto para realizar suas simulações com a nossa poderosa calculadora de
+      juros compostos.</p>
+  </article>
+  <article>
+    <h1>Entendendo a Fórmula Mágica dos Juros Compostos</h1>
+    <p>Você já se perguntou como a mágica dos juros compostos acontece? A resposta está em uma fórmula simples:</p>
+    <p>A = P (1 + i) ^ t</p>
+    <p>Vamos desvendar essa fórmula, explicando o significado de cada variável envolvida:</p>
+    <ul>
+      <li>A - Refere-se ao valor final, ou seja, o resultado que você obterá.</li>
+      <li>P - Representa o valor inicial que você depositou ou investiu.</li>
+      <li>i - Indica a taxa de juros, expressa como uma fração (por exemplo, 0,10 para 10%) ou uma porcentagem (por
+        exemplo, 10%).</li>
+      <li>t - Denota o tempo de investimento, geralmente em anos.</li>
+    </ul>
+    <p>É fundamental lembrar que tanto a taxa de juros quanto o tempo devem estar na mesma unidade (anos ou meses) para
+      que a fórmula funcione adequadamente.</p>
+    <p>Para tornar as coisas mais simples, vamos usar um exemplo prático. Suponha que alguém tenha investido R$
+      10.000,00 a uma taxa de 10% ao ano durante 5 anos.</p>
+    <p>No primeiro ano, o rendimento foi de 10%, o que resultou em R$ 1.000,00 de ganho, totalizando R$ 11.000,00.</p>
+    <p>No segundo ano, o rendimento foi novamente de 10%, mas dessa vez calculado sobre R$ 11.000, gerando R$ 1.100,00.
+      Ao final do segundo ano, o montante atingiu R$ 12.100,00.</p>
+    <p>Assim, o rendimento sempre é calculado como 10% sobre o valor do período anterior, gerando o poderoso efeito
+      exponencial dos juros compostos.</p>
+    <p>Ao final, o montante final alcança incríveis R$ 16.105,10.</p>
+    <img src="/assets/images/tabela-exemplo-juros-compostos.png" alt="imagme">
+    <p>Observe que a cada ano, o valor ganho em juros aumenta, mesmo sem qualquer novo aporte de dinheiro. Em contraste,
+      nos juros simples, os juros incidem apenas sobre o valor inicial.</p>
+    <p>No regime de juros simples, o total que você teria seria de R$ 15.000,00. Em outras palavras, uma diferença de
+      mais de 1 mil reais resultante do incrível efeito exponencial dos juros compostos.</p>
+  </article>
+  <article>
+    <h1>Desvendando os Mistérios dos Juros Compostos</h1>
+    <p>Os juros compostos são a arte dos juros que se acumulam sobre juros. Eles desempenham um papel fundamental no
+      mundo das finanças, oferecendo um potencial de crescimento mais robusto em comparação com os juros simples.</p>
+    <p>Entretanto, é fundamental compreender que os juros compostos são um dos conceitos mais importantes para quem
+      busca se aventurar no universo dos investimentos.</p>
+    <p>Juros são uma pedra fundamental em qualquer plano financeiro bem elaborado, frequentemente dominada por aqueles
+      que desejam explorar o mundo dos investimentos. No entanto, muitas pessoas subestimam a complexidade por trás do
+      funcionamento dos juros, o que pode levar a equívocos ao investir.</p>
+    <p>Para simplificar, vamos usar um exemplo prático:</p>
+    <p>Imagine-se na seguinte situação: você pediu dinheiro emprestado a um amigo sob a condição de devolver o valor
+      emprestado acrescido de uma quantia adicional.</p>
+    <p>Essa quantia extra que você paga ao credor (seu amigo que emprestou o dinheiro) é o que chamamos de juros. Em
+      outras palavras, os juros representam a compensação pelo empréstimo de dinheiro.</p>
+    <p>Além disso, é importante notar que quanto mais longo for o prazo para pagar o empréstimo, maior será o montante
+      total pago na forma de juros.</p>
+    <p>Simples, concorda? No entanto, apesar de sua simplicidade, muitas pessoas têm uma compreensão equivocada desse
+      assunto.</p>
+    <p>No contexto financeiro, compreender plenamente o conceito de juros é essencial para garantir que seus
+      investimentos cresçam ao longo do tempo.</p>
+  </article>
+  <article>
+    <h1>Juros Simples vs. Juros Compostos</h1>
+    <p>No regime de juros simples, a taxa de juros incide apenas sobre o capital inicial. Isso significa que os juros
+      são calculados apenas com base na quantia original investida ou emprestada.</p>
+    <p>As principais diferenças entre juros simples e compostos podem ser resumidas da seguinte forma:</p>
+  </article>
+  <article>
+    <h1>Juros Simples</h1>
+    <ul>
+      <li>São pagos periodicamente (mensal ou anualmente) ao credor;</li>
+      <li>Permanecem constantes ao longo do tempo, mas diminuem em termos reais devido à inflação;</li>
+      <li>Se somados ao capital original, formariam uma linha reta (por exemplo, 1000, 1100, 1200 etc.);</li>
+      <li>Podem ser comparados aos frutos de uma árvore: colhidos e consumidos;</li>
+      <li>O credor usufrui imediatamente dos juros recebidos;</li>
+      <li>Se não forem pagos ou incorporados ao montante, podem resultar em perda inflacionária e diminuição da taxa de
+        rendimento.</li>
+    </ul>
+  </article>
+  <article>
+    <h1>Juros Compostos</h1>
+    <ul>
+      <li>São pagos ao credor somente no vencimento;</li>
+      <li>Crescem com o tempo, tanto em termos reais quanto nominais, se a taxa for superior à inflação;</li>
+      <li>Quando incorporados ao capital, geram uma curva ascendente (por exemplo, 1000, 1100, 1210 etc.);</li>
+      <li>O credor usufrui dos juros de forma adiada;</li>
+      <li>Se forem pagos, não são incorporados ao montante, que não aumenta durante o período em que são pagos.</li>
+    </ul>
+    <p>Os juros compostos representam a aplicação de juros sobre juros, ou seja, são aplicados aos montantes de cada
+      período.</p>
+  </article>
+  <article>
+    <h1>Desvendando o Poder dos Juros sobre Juros</h1>
+    <p>Agora que você aprendeu a calcular os juros compostos, é fundamental compreender o impacto transformador que os
+      juros sobre juros podem ter em seus investimentos. Basta observar a imagem abaixo:</p>
+    <img src="/assets/images/poder-dos-juros-sobre-juros.png" alt="Gráfico de Crescimento com Juros Compostos">
+    <p>Como é possível observar, no longo prazo (mais de 15 anos) é onde você colherá os maiores benefícios dos juros
+      compostos. Como Albert Einstein sabiamente afirmou:</p>
+    <blockquote>
+      <p><strong><em>“Os juros compostos são a força mais poderosa do universo e a maior invenção da humanidade, porque
+            permitem uma confiável e sistemática acumulação de riqueza”</em></strong></p>
+      <cite> Albert Einstein </cite>
+    </blockquote>
+  </article>
+</section>
+
+
+
+
+<main *ngIf="isResult" class="result">
+  <button (click)="Voltar()"><i class="fa-solid fa-arrow-left"></i> Fazer outro cálculo</button>
+  <section class="result__container">
+    <h1>Meu cálculo</h1>
+    <div>
+      <div class="card">
+        <span class="title">Valor Incial</span>
+        <b>{{startInitialValue | currency:'BRL':'symbol':'1.2-2'}}</b>
+      </div>
+      <div class="card">
+        <span class="title">Valor mensal</span>
+        <b>{{monthValue | currency:'BRL':'symbol':'1.2-2'}}</b>
+      </div>
+      <div class="card">
+        <span class="title">Taxa de juros</span>
+        <b>{{rate | number:'1.2-2'}}% ({{rateTime}})</b>
+      </div>
+      <div class="card">
+        <span class="title">Período em</span>
+        <b>{{period}} {{periodTime}}</b>
+      </div>
+    </div>
+  </section>
+  <section class="result__container_second">
+    <h1>Resultado</h1>
+    <div>
+      <div class="card">
+        <span class="title">Valor total final</span>
+        <span class="bold dark">{{totalFinal| currency:'BRL':'symbol':'1.2-2'}}</span>
+      </div>
+      <div class="card">
+        <span class="title">Valor total investido</span>
+        <span class="bold blue">{{totalInvestido | currency:'BRL':'symbol':'1.2-2'}}</span>
+      </div>
+      <div class="card">
+        <span class="title">Total em juros</span>
+        <span class="bold green">{{totalJuros | currency:'BRL':'symbol':'1.2-2'}}</span>
+      </div>
+    </div>
+  </section>
+  <section class="result__container max-height">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">{{ periodTime === "Meses" ? "Mês" : "Ano" }}</th>
+          <th scope="col">Juros</th>
+          <th scope="col">Total Investido</th>
+          <th scope="col">Total Juros</th>
+          <th scope="col">Total Acumulado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultadoTotal; index as i">
+          <th scope="row">{{ i }}</th>
+          <td>
+            {{item.juros | currency:'BRL':'symbol':'1.2-2'}}
+          </td>
+          <td>{{ item.totalInvestido | currency:'BRL':'symbol':'1.2-2'}}</td>
+          <td>{{ item.totalJuros | currency:'BRL':'symbol':'1.2-2'}}</td>
+          <td>{{ item.totalAcumulado | currency:'BRL':'symbol':'1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="result__container_second">
+  </section>
+</main>
+
+<div class="chart-producao chart">
+  <canvas #ControleProducao></canvas>
+</div>
