@@ -9,16 +9,13 @@
     <div class="form-container">
         <mat-form-field floatLabel="always">
             <mat-label>Distância percorrida</mat-label>
-            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="initialValue"
-                mask="separator.2" thousandSeparator=".">
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="distancia">
             <span matTextPrefix>km&nbsp;</span>
         </mat-form-field>
 
         <mat-form-field floatLabel="always" ngbDropdown>
             <mat-label>Consumo médio do veículo</mat-label>
-            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="rate"
-                mask="separator.2" thousandSeparator=".">
-            <span matTextPrefix>km/&nbsp;</span>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="consumo">
             <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle matSuffix>
                 {{rateTime}}
             </button>
@@ -31,10 +28,12 @@
         <mat-form-field floatLabel="always" ngbDropdown>
             <mat-label>Preço por litro</mat-label>
             <span matTextPrefix>R$/ℓ&nbsp;</span>
-            <input matInput type="number" class="example-right-align" placeholder="0" [(ngModel)]="period">
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="preco" mask="separator.2" thousandSeparator="."> 
             <span matTextSuffix>por ℓ&nbsp;</span>
         </mat-form-field>
-
+        <label class="cyberpunk-checkbox-label" (click)="idaEvolta = true">
+            <input type="checkbox" class="cyberpunk-checkbox">
+            Adicionar caminho de volta</label>
 
         <div class="buttons">
             <button (click)="CalcularJurosCompostos()">Calcular</button>
@@ -46,79 +45,66 @@
 
 <section *ngIf="!isResult" class="blog">
     <article>
-        <h2>Guia rápido para utilizar a calculadora de juros simples</h2>
-        <ol>
-            <li>Comece preenchendo o campo 'Valor inicial'.</li>
-            <li>Em seguida, insira a 'Taxa de juros' (anual ou mensal).</li>
-            <li>Complete o campo 'Período' em meses ou anos.</li>
-            <li>Agora, clique no botão 'Calcular' para visualizar o resultado.</li>
+        <h2>Utilizando a Calculadora de Combustível</h2>
+        <p>Se deseja entender como calcular os custos de combustível, siga estes passos simples:</p>
+        <ol class="list-first">
+            <li>Insira a distância a ser percorrida em quilômetros.</li>
+            <li>Forneça o consumo médio do veículo.</li>
+            <li>Informe o valor por litro do combustível adquirido.</li>
+            <li>Clique em "Calcular".</li>
         </ol>
-        <p>É simples assim! Agora você está pronto para explorar todas as possibilidades com a nossa prática calculadora
-            de juros simples.</p>
+        <p>Receberá o cálculo do consumo de combustível e terá a opção de inserir o custo da viagem de volta.</p>
     </article>
     <article>
-        <h2>Explorando a Fórmula de Juros Simples</h2>
-        <p>A fórmula de juros simples é, como o próprio nome indica, uma fórmula simples para realizar cálculos
-            financeiros. É representada da seguinte maneira: Total = P × I × N. E aqui está o que essas variáveis
-            representam:</p>
-        <ul>
-            <li>P = o valor principal</li>
-            <li>I = a taxa de juros</li>
-            <li>N = o número de períodos entre datas</li>
-        </ul>
-        <p>É fácil perceber que estamos multiplicando a taxa de juros, que sempre incide sobre o valor inicial, pelo
-            número de períodos. Isso nos permite observar como o saldo dessa operação cresce de maneira constante.</p>
-        <p>No gráfico abaixo, consideramos um investimento de R$ 1.000,00, com uma taxa de 10% ao ano, durante 10 anos.
-        </p>
-        <!-- Inserir aqui o código para a imagem do gráfico de juros simples -->
-        <span>Exemplo de Juros Simples 1</span>
-        <p>Uma vez que os 10% sempre incidem sobre os R$ 1.000,00, o rendimento anual permanece constante em R$ 100,00.
-            Isso fica ainda mais claro na tabela a seguir:</p>
-        <img src="/assets/images/tabela-exemplo-juros-simples.png" alt="imagem tabela">
-        <span>Exemplo de Juros Simples 2</span>
+        <h2>O Que São Combustíveis?</h2>
+        <p>Combustíveis são substâncias que, ao entrar em contato com o oxigênio, geram calor e são fundamentais para acionar os motores de veículos.</p>
+        <p>Dentro desse contexto, encontramos diversas variedades de combustíveis, incluindo diesel, gasolina e etanol, frequentemente conhecido como álcool.</p>
     </article>
     <article>
-        <h2>Como Fazer um Cálculo Simples de Juros</h2>
-        <p>Vamos agora entender como realizar um cálculo de juros simples através de um exemplo prático. Imagine que
-            você tenha investido R$ 10.000,00 usando o sistema de juros simples, com um rendimento de 5% ao ano.</p>
-        <p>Nesse cenário, seu investimento renderá precisamente R$ 500,00 por ano até a data de vencimento, pois a taxa
-            sempre incide sobre o valor inicial.</p>
-        <p>Portanto, se você deixar seu investimento aplicado por 10 anos, ao final desse período você terá R$
-            15.000,00, pois:</p>
-        <p>Total: 10.000 (reais) x 500 (reais por ano) x 10 (anos) = 15.000.</p>
+        <h2>Como Calcular o Consumo de Combustível?</h2>
+        <p>Para ter uma ideia do consumo do seu veículo e calcular os gastos de combustível, é essencial determinar a quilometragem por litro do veículo.</p>
+        <p>Com os dados de eficiência do veículo por litro, a distância a ser percorrida e o valor do combustível por litro, é viável estimar os gastos com combustível em viagens ou na rotina diária.</p>
     </article>
     <article>
-        <h1>Juros Simples vs. Juros Compostos</h1>
-        <p>No regime de juros simples, a taxa de juros incide apenas sobre o capital inicial. Isso significa que os
-            juros
-            são calculados apenas com base na quantia original investida ou emprestada.</p>
-        <p>As principais diferenças entre juros simples e compostos podem ser resumidas da seguinte forma:</p>
+        <h2>Como Calcular o Consumo de Combustível por Quilômetro?</h2>
+        <p>Calcular o consumo de combustível por quilômetro é simples: divida o preço do litro da gasolina pelo consumo médio do veículo.</p>
+        <p>Vamos exemplificar:</p>
+        <ol class="list">
+            <li>Suponhamos que o preço da gasolina seja R$ 5,80 na sua região.</li>
+            <li>Seu carro percorre 11 quilômetros com um litro de gasolina.</li>
+            <li>Portanto, a fórmula seria: 5,80 / 11 = 0,52;</li>
+            <li>Ou seja, o custo por quilômetro é de R$ 0,52.</li>
+        </ol>
     </article>
     <article>
-        <h1>Juros Simples</h1>
-        <ul>
-            <li>São pagos periodicamente (mensal ou anualmente) ao credor;</li>
-            <li>Permanecem constantes ao longo do tempo, mas diminuem em termos reais devido à inflação;</li>
-            <li>Se somados ao capital original, formariam uma linha reta (por exemplo, 1000, 1100, 1200 etc.);</li>
-            <li>Podem ser comparados aos frutos de uma árvore: colhidos e consumidos;</li>
-            <li>O credor usufrui imediatamente dos juros recebidos;</li>
-            <li>Se não forem pagos ou incorporados ao montante, podem resultar em perda inflacionária e diminuição da
-                taxa de
-                rendimento.</li>
-        </ul>
+        <h2>Calculando o Gasto de Combustível na Viagem</h2>
+        <p>Para calcular o gasto de combustível em uma viagem, o primeiro passo é determinar a eficiência do seu veículo, ou seja, quantos quilômetros ele percorre com um litro de combustível.</p>
+        <p>Essa informação, combinada com a distância planejada para a viagem e o preço do combustível por litro, são essenciais para usar nossa calculadora de combustível.</p>
+        <p>Confira na imagem um exemplo de como preencher os dados para calcular o combustível gasto na viagem.</p>
+        <img src="caminho/para/imagem/exemplo-calculo-combustivel-viagem.png" alt="Exemplo de Preenchimento para Cálculo de Combustível na Viagem">
     </article>
     <article>
-        <h1>Juros Compostos</h1>
-        <ul>
-            <li>São pagos ao credor somente no vencimento;</li>
-            <li>Crescem com o tempo, tanto em termos reais quanto nominais, se a taxa for superior à inflação;</li>
-            <li>Quando incorporados ao capital, geram uma curva ascendente (por exemplo, 1000, 1100, 1210 etc.);</li>
-            <li>O credor usufrui dos juros de forma adiada;</li>
-            <li>Se forem pagos, não são incorporados ao montante, que não aumenta durante o período em que são pagos.
-            </li>
-        </ul>
-        <p>Os juros compostos representam a aplicação de juros sobre juros, ou seja, são aplicados aos montantes de cada
-            período.</p>
+        <h2>Como Poupar Combustível?</h2>
+        <p>Para economizar combustível, é fundamental calcular constantemente qual opção é mais vantajosa na hora de abastecer seu veículo, especialmente devido às flutuações frequentes nos preços dos combustíveis.</p>
+        <p>Além disso, para ajudar a economizar ainda mais combustível, aqui estão algumas dicas:</p>
+        <ol class="list">
+            <li>Respeite os momentos de troca de marchas.</li>
+            <li>Avoid carrying excess weight.</li>
+            <li>Faça alinhamento e balanceamento regularmente.</li>
+            <li>Não acelere enquanto estiver parado no farol.</li>
+            <li>Evite deixar o veículo em ponto morto em descidas.</li>
+            <li>Calibre os pneus regularmente.</li>
+            <li>Realize manutenções preventivas.</li>
+        </ol>
+    </article>
+    <article>
+        <h2>Como Calcular Qual Combustível é Mais Vantajoso?</h2>
+        <p>Para determinar qual combustível é mais vantajoso, é necessário comparar o desempenho de um em relação ao outro.</p>
+        <p>Por exemplo, gasolina versus etanol:</p>
+        <p>Se o veículo faz 7,3 km por litro com etanol e 10 km por litro com gasolina, divida 7,3 por 10 = 0,73 ou 73%.</p>
+        <p>Agora, divida o preço do etanol pelo preço da gasolina, considerando, digamos, que o etanol seja 3,90 e a gasolina 5,80. Fazendo etanol/gasolina, o resultado é 3,90 por 5,80 = 0,67 ou 67%.</p>
+        <p>Se o etanol custar até 70% do preço da gasolina, é mais vantajoso. Ou seja, no exemplo acima, optar pelo etanol representaria uma maior economia.</p>
+        <p>Caso contrário, é melhor escolher a gasolina.</p>
     </article>
 </section>
 
@@ -131,64 +117,47 @@
         <h1>Meu cálculo</h1>
         <div>
             <div class="card">
-                <span class="title">Valor Incial</span>
-                <b>{{startInitialValue | currency:'BRL':'symbol':'1.2-2'}}</b>
+                <span class="title">Distância percorrida (somente ida)</span>
+                <b>{{distancia}} Km</b>
             </div>
             <div class="card">
-                <span class="title">Taxa de juros</span>
-                <b>{{rate | number:'1.2-2'}}% ({{rateTime}})</b>
+                <span class="title">Consumo médio do veículo</span>
+                <b>{{consumo | number:'1.2-2'}} ({{rateTime}})</b>
             </div>
             <div class="card">
-                <span class="title">Período em</span>
-                <b>{{period}} {{periodTime}}</b>
+                <span class="title">Preço do combustivel por litro</span>
+                <b>{{preco |currency:'BRL':'symbol':'1.2-2' }}</b>
             </div>
         </div>
     </section>
     <section class="result__container_second">
         <h1>Resultado</h1>
         <div>
-            <div class="card">
-                <span class="title">Valor total final</span>
-                <span class="bold dark">{{totalFinal| currency:'BRL':'symbol':'1.2-2'}}</span>
-            </div>
-            <div class="card">
-                <span class="title">Valor total investido</span>
-                <span class="bold blue">{{totalInvestido | currency:'BRL':'symbol':'1.2-2'}}</span>
-            </div>
-            <div class="card">
-                <span class="title">Total em juros</span>
-                <span class="bold green">{{totalJuros | currency:'BRL':'symbol':'1.2-2'}}</span>
-            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-header">
+                        <th scope="col">Km</th> 
+                        <th scope="col">Consumo (ℓ)</th>
+                        <th scope="col">Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-data" scope="row">
+                            {{distancia}} km
+                        </td>
+                        <td class="table-data" scope="row" *ngIf="rateTime != 'ℓ/100km'">
+                            {{distancia! / consumo! | number:'1.2-2'}} ℓ
+                        </td>
+                        <td class="table-data" scope="row" *ngIf="rateTime == 'ℓ/100km'">
+                            {{distancia! *( consumo! / 100) | number:'1.2-2'}} ℓ
+                        </td>
+                        <td class="table-data" scope="row">
+                            {{resultado |currency:'BRL':'symbol':'1.2-2' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
-    <section class="result__container max-height">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">{{ periodTime === "Meses" ? "Mês" : "Ano" }}</th>
-                    <th scope="col">Juros</th>
-                    <th scope="col">Total Investido</th>
-                    <th scope="col">Total Juros</th>
-                    <th scope="col">Total Acumulado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of resultadoTotal; index as i">
-                    <th scope="row">{{ i }}</th>
-                    <td>
-                        {{item.juros | currency:'BRL':'symbol':'1.2-2'}}
-                    </td>
-                    <td>{{ item.totalInvestido | currency:'BRL':'symbol':'1.2-2'}}</td>
-                    <td>{{ item.totalJuros | currency:'BRL':'symbol':'1.2-2'}}</td>
-                    <td>{{ item.totalAcumulado | currency:'BRL':'symbol':'1.2-2'}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section class="result__container_second">
-    </section>
 </main>
-
-<div class="chart-producao chart">
-    <canvas #ControleProducao></canvas>
-</div>

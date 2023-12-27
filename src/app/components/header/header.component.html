@@ -1,46 +1,71 @@
-<nav>
-    <img src="" alt="">
-    <div>
-        <ul>
-            <li>
-                <a>
-                    <mat-icon>search</mat-icon>
-                </a>
-                <a>
-                    <div class="row">
-                        <div class="col">
-                            <div ngbDropdown class="d-inline-block">
-                                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1"
-                                    ngbDropdownToggle>
-                                    AÇÕES
-                                </button>
-                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button ngbDropdownItem>Action - 1</button>
-                                    <button ngbDropdownItem>Another Action</button>
-                                    <button ngbDropdownItem>Something else is here</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a>
-                    <div class="row">
-                        <div class="col">
-                            <div ngbDropdown class="d-inline-block">
-                                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1"
-                                    ngbDropdownToggle>
-                                    FIIS
-                                </button>
-                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button ngbDropdownItem>Action - 1</button>
-                                    <button ngbDropdownItem>Another Action</button>
-                                    <button ngbDropdownItem>Something else is here</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
+<nav [ngClass]="{'small': isNavbarSmall}">
+	<div class="container">
+		<a class="nav-link" [routerLink]="['/']">
+			<img src="/assets/images/logo.png" alt="logo">
+		</a>
+		<div class="links" *ngIf="tela > 1000">
+			<ul>
+				<li><a (click)="open(content)"><mat-icon>search</mat-icon></a></li>
+				<li><a [routerLink]="['/calculadoras']">Calculadoras</a></li>
+				<li><a [routerLink]="['/fii']">Fii</a></li>
+				<li><a [routerLink]="['']">Ações</a></li>
+			</ul>
+		</div>
+		<mat-icon (click)="opens(contents)" *ngIf="tela <= 1000">menu</mat-icon>
+	</div>
 </nav>
+
+
+<ng-template #contents let-offcanvas class="teste">
+	<div class="offcanvas-header">
+		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+	</div>
+	<div class="offcanvas-body">
+		<div class="links">
+			<ul>
+				<li><a (click)="open(content)" (click)="offcanvas.dismiss('Cross click')"><mat-icon>search</mat-icon></a></li>
+				<li><a [routerLink]="['/calculadoras']" (click)="offcanvas.dismiss('Cross click')">Calculadoras</a></li>
+				<li><a [routerLink]="['/fii']" (click)="offcanvas.dismiss('Cross click')">Fii</a></li>
+				<li><a [routerLink]="['']" (click)="offcanvas.dismiss('Cross click')">Ações</a></li>
+			</ul>
+		</div>
+	</div>
+</ng-template>
+
+
+<ng-template #content let-modal class="container-teste">
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+				<label class="title">Pesquisar</label>
+				<div class="input-group">
+					<input type="text" matInput #nome (keyup)="autoComplete(nome.value)"
+						placeholder="Busque ações, FIIs, índices, ETFs, etc" />
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="search-container">
+		<div *ngFor="let item of acao" [routerLink]="['/acoes', item.name]" class="info" (click)="modal.close('Save click')">
+			<h1>{{item.name}} <span>{{item.description}}</span></h1>
+			<div class="info_container">
+				<h1>R$ {{item.price | customNumberFormat}}</h1>
+				<h1>{{item.priceFluctuation | customNumber}}%</h1>
+				<span>ação</span>
+			</div>
+		</div>
+		<div *ngFor="let item of fii" [routerLink]="['/fii', item.name]" class="info" (click)="modal.close('Save click')">
+			<h1>{{item.name}} <span>{{item.nomeCompleto}}</span>
+			</h1>
+			<div class="info_container">
+				<h1>R$ {{item.price | customNumberFormat}}</h1>
+				<h1>{{item.variacao| customNumber}}%</h1>
+				<span>fii</span>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn-custom"
+			(click)="modal.close('Save click')"><mat-icon>cancel</mat-icon></button>
+	</div>
+</ng-template>

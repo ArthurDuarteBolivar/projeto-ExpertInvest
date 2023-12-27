@@ -1,1 +1,242 @@
-<p>porcentagem works!</p>
+<app-header-page title="Cálculo de Juros Simples"
+    description="Juros simples são acrescidos somente em cima do valor inicial ao final de cada período, mantendo assim um crescimento constante. Calcule de forma prática e gratuita!"></app-header-page>
+
+<main class="calc">
+    <h3 class="title">Simulador de Porcentagem: Cálculo 1</h3>
+    <div class="form-container">
+        <mat-form-field floatLabel="always">
+            <mat-label>Quanto é</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor1Calculadora1">
+            <span matTextPrefix>%&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>De (valor)</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor2Calculadora1">
+            <span matTextPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>Resultado</mat-label>
+            <input matInput type="number" class="example-right-align" readonly placeholder="0" [(ngModel)]="resultado1">
+            <span matTextPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+
+        <div class="buttons">
+            <button (click)="Calculadora1()">Calcular</button>
+            <button (click)="Limpar1()">Limpar</button>
+        </div>
+    </div>
+</main>
+<main class="calc">
+    <h3 class="title">Simulador de Porcentagem: Cálculo 2</h3>
+    <div class="form-container">
+        <mat-form-field floatLabel="always">
+            <mat-label>O valor</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor1Calculadora2">
+            <span matTextPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>é qual porcentagem de</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor2Calculadora2">
+            <span matTextPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>Resultado</mat-label>
+            <input matInput type="text" class="example-right-align" readonly placeholder="0" [(ngModel)]="resultado2">
+            <span matTextSuffix>%&nbsp;</span>
+        </mat-form-field>
+
+
+        <div class="buttons">
+            <button (click)="Calculadora2()">Calcular</button>
+            <button (click)="Limpar2()">Limpar</button>
+        </div>
+    </div>
+</main>
+<main class="calc">
+    <h3 class="title">Simulador de Porcentagem: Cálculo 3</h3>
+    <div class="form-container">
+        <mat-form-field floatLabel="always">
+            <mat-label>Um valor de</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor1Calculadora3">
+            <span matTextPrefix>%&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>Que <strong>AUMENTOU</strong> para</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor2Calculadora3">
+            <span matTextPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>Qual foi o aumento percentual?</mat-label>
+            <input matInput type="text" class="example-right-align" readonly placeholder="0" [(ngModel)]="resultado3">
+            <span matTextSuffix>%&nbsp;</span>
+        </mat-form-field>
+
+
+        <div class="buttons">
+            <button (click)="Calculadora3()">Calcular</button>
+            <button (click)="Limpar3()">Limpar</button>
+        </div>
+    </div>
+</main>
+
+<main class="calc">
+    <h3 class="title">Simulador de Porcentagem: Cálculo 3</h3>
+    <div class="form-container">
+        <mat-form-field floatLabel="always">
+            <mat-label>Um valor de</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor1Calculadora4">
+            <span matTextPrefix>%&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>Que <strong>DIMINUIU</strong> para</mat-label>
+            <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="valor2Calculadora4">
+            <span matTextPrefix>R$&nbsp;</span>
+        </mat-form-field>
+
+        <mat-form-field floatLabel="always" ngbDropdown>
+            <mat-label>Qual foi a diminuição percentual?</mat-label>
+            <input matInput type="text" class="example-right-align" readonly placeholder="0" [(ngModel)]="resultado4">
+            <span matTextSuffix>%&nbsp;</span>
+        </mat-form-field>
+
+
+        <div class="buttons">
+            <button (click)="Calculadora4()">Calcular</button>
+            <button (click)="Limpar4()">Limpar</button>
+        </div>
+    </div>
+</main>
+
+
+<section class="blog">
+    <article>
+        <h2>Instruções para Utilizar a Calculadora de Porcentagem</h2>
+
+        <p><strong>Método 1:</strong></p>
+        <ul class="list-first">
+            <li>Insira a porcentagem desejada no primeiro campo;</li>
+            <li>Preencha o segundo campo com o valor monetário total;</li>
+            <li>Clique em calcular para ver o resultado da porcentagem.</li>
+        </ul>
+
+        <p><strong>Método 2:</strong></p>
+        <ul class="list-first">
+            <li>Informe o valor desejado no primeiro campo;</li>
+            <li>Complete o segundo campo com o valor total;</li>
+            <li>Clique em calcular para obter o resultado do valor.</li>
+        </ul>
+
+        <p><strong>Método 3:</strong></p>
+        <ul class="list-first">
+            <li>Preencha o campo inicial com o valor desejado;</li>
+            <li>Informe o campo de aumento do valor;</li>
+            <li>Para visualizar o aumento, clique em calcular e confira o resultado.</li>
+        </ul>
+
+        <p><strong>Método 4:</strong></p>
+        <ul class="list-first">
+            <li>Preencha o campo inicial com o valor desejado;</li>
+            <li>Informe o campo de diminuição do valor;</li>
+            <li>Para visualizar a diminuição, clique em calcular e confira o resultado.</li>
+        </ul>
+
+        <p>Simples, não é? Agora você está pronto para realizar seus cálculos na nossa eficiente calculadora de
+            porcentagem.</p>
+
+    </article>
+    <article>
+        <h2>Entendendo o Cálculo de Porcentagem</h2>
+
+        <p>O cálculo de porcentagem é, essencialmente, uma ferramenta que visa descobrir a proporção entre o todo e uma
+            de suas partes.</p>
+
+        <p>Compreender como calcular porcentagem pode ser crucial para resolver uma variedade de problemas em diferentes
+            áreas, como calcular juros de prestações em atraso, medir a gordura corporal ou avaliar a rentabilidade de
+            investimentos em termos percentuais.</p>
+
+    </article>
+    <article>
+        <h2>Exemplos Práticos de Cálculo de Porcentagem</h2>
+
+        <p>A porcentagem desempenha um papel crucial no cotidiano da maioria das pessoas. Ao utilizar métodos de
+            distribuição de renda para organizar o orçamento, por exemplo, é essencial saber como calcular porcentagem e
+            dividir adequadamente o salário.</p>
+
+        <p>Por esse motivo, confira alguns exemplos práticos de como realizar o cálculo de porcentagem.</p>
+    </article>
+    <article>
+        <h2>Cálculo 1: Como Calcular 5% de um Valor?</h2>
+
+        <p><strong>Exemplo:</strong> Calcular 5% de 700</p>
+
+        <p>Para obter o valor da porcentagem, basta multiplicar a fração da seguinte forma:</p>
+
+        <p><strong>5% de 700 = 5/100 X 700</strong></p>
+
+        <p><strong>= 0,05 X 700</strong></p>
+
+        <p><strong>= 35</strong></p>
+        <p>O valor final do cálculo será 35, uma vez que é o valor que representa 5% de 700.</p>
+    </article>
+    <article>
+        <h2>Cálculo 2: Como Calcular a Porcentagem de um Valor em Relação ao Outro?</h2>
+
+        <p><strong>Exemplo:</strong> Calcular qual porcentagem 100 representa em relação a 500</p>
+
+        <p>Para obter o valor da porcentagem, basta dividir um pelo outro e multiplicar por 100:</p>
+
+        <p><strong>100 por 500 = (100/500) X 10</strong>0</p>
+
+        <p><strong>= (100/500) X 100</strong></p>
+
+        <p><strong>= 0,2 X 100</strong></p>
+
+        <p>O valor final do cálculo será 20%, uma vez que é o valor que 100 representa 20% de 500.</p>
+
+    </article>
+    <article>
+        <h2>Cálculo 3: Como Calcular o Aumento Percentual</h2>
+
+        <p><strong>Exemplo:</strong> Calcular o aumento percentual de 30 para 90</p>
+
+        <p>Para obter o valor do aumento percentual, basta subtrair o segundo pelo primeiro, dividir pelo primeiro e
+            multiplicar por 100:</p>
+
+        <p><strong>De 30 para 90 = (90-30/30) X 100</strong></p>
+
+        <p><strong>= (90-30/30) X 100</strong></p>
+
+        <p><strong>= (60/30) x 100</strong></p>
+
+        <p><strong>= 2 X 100</strong></p>
+
+        <p>O valor final do cálculo será 200, que representa 200% de aumento.</p>
+    </article>
+    <article>
+        <h2>Cálculo 4: Como Calcular a Diminuição Percentual</h2>
+
+        <p><strong>Exemplo:</strong> Calcular a diminuição percentual de 90 para 30</p>
+
+        <p>Para obter o valor da diminuição percentual, basta subtrair o primeiro pelo segundo, dividir pelo primeiro e
+            multiplicar por 100:</p>
+
+        <p><strong>De 90 para 30 = (90-30/90) X 100</strong></p>
+
+        <p><strong>= (90-30/90) X 100</strong></p>
+
+        <p><strong>= (60/90) x 100</strong></p>
+
+        <p><strong>= 0,666 X 100</strong></p>
+
+        <p>O valor final do cálculo será 66,6, que representa 66,6% de diminuição.</p>
+
+    </article>
+</section>

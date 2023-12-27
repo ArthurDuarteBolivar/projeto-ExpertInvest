@@ -1,0 +1,32 @@
+<div class="top-info">
+    <div class="info">
+        <span class="title">VAL. PATRIMONIAL P/COTA</span>
+        <span><span class="icon">R$</span>{{fii.valorPatrimonialPorCota| customNumber}}</span>
+        <span class="sub-title">PATRIMÔNIO</span>
+        <span class="description">R$ {{fii.patrimonio| customNumberFormat}}</span>
+    </div>
+    <div class="info">
+        <span class="title">P/VP</span>
+        <span>{{fii.precoSobreVP| customNumber}}</span>
+        <span class="sub-title">VALOR DE MERCADO</span>
+        <span class="description">R$ {{fii.valorDeMercado| customNumberFormat}}</span>
+    </div>
+    <div class="info">
+        <span class="title">VALOR EM CAIXA</span>
+        <span><span class="icon">R$</span>{{fii.valorEmCaixa| customNumber}}%</span>
+        <span class="sub-title">TOTAL</span>
+        <span class="description">R$ {{fii.totalEmCaixa| customNumberFormat}}</span>
+    </div>
+    <div class="info">
+        <span class="title">DY CAGR (3 ANOS)</span>
+        <span>{{fii.dyCagr3Anos| customNumber}}</span>
+        <span class="sub-title">DY CAGR (5 ANOS)</span>
+        <span class="description">{{fii.dyCagr5Anos| customNumber}}</span>
+    </div>
+    <div class="info">
+        <span class="title">Nº DE COTISTAS</span>
+        <span>{{fii.ndeCotistas| customNumberFormat}}</span>
+        <span class="sub-title">Nº DE COTAS</span>
+        <span class="description">{{fii.ndeCotas| customNumberFormat}}</span>
+    </div>
+</div>

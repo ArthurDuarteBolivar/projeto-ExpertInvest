@@ -11,6 +11,8 @@ export class HeaderPageComponent {
   title: string = ""
   @Input()
   description: string = ""
+  @Input()
+  icon: string = "true"
 
 
 }

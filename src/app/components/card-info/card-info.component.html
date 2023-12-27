@@ -1,0 +1,18 @@
+<main>
+    <div class="info_container">
+        <span class="uppercase">tag along</span>
+        <h1 class="uppercase">{{info.tagAlong}}<span class="currency">%</span></h1>
+    </div>
+    <div class="info_container">
+        <span class="uppercase">liquidez média diária</span>
+        <h1 class="uppercase"><span class="currency">R$</span> {{info.dailyLiquidityAverage | customNumberFormat}}</h1>
+    </div>
+    <div class="info_container">
+        <span class="uppercase">PARTICIPAÇÃO NO <strong>IBOV</strong></span>
+        <h1 class="uppercase">{{info.participationIbov | customNumber:3}}<span class="currency">%</span></h1>
+    </div>
+    <div class="info_container">
+        <span class="uppercase">mercado de <strong>opções</strong></span>
+        <h1 class="uppercase">{{info.marketOptions}} <span class="currency">em aberto</span></h1>
+    </div>
+</main>

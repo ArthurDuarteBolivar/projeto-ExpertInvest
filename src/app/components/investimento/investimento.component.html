@@ -1,1 +1,60 @@
-<p>investimento works!</p>
+<app-header-page title="FII" description="FUNDOS DE INVESTIMENTO IMOBILIÁRIO"></app-header-page>
+
+
+
+
+<div class="search">
+	<h1>DY</h1>
+	<div>
+		<span>{{minDividendSearch}}</span>
+		<span>{{maxDividendSearch}}</span>
+	</div>
+	<mat-slider min="0" max="20">
+		<input matSliderStartThumb [(value)]="minDividendSearch">
+		<input matSliderEndThumb [(value)]="maxDividendSearch">
+	  </mat-slider>
+</div>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">TICKER</th>
+			<th scope="col">PREÇO</th>
+			<th scope="col">DY</th>
+			<th scope="col">P/VP</th>
+			<th scope="col">PERCENTUAL DO CAIXA</th>
+			<th scope="col">Nº DE COTISTAS</th>
+			<th scope="col">DY CAGR 3 ANOS</th>
+			<th scope="col">LIQUIDEZ MÉDIA DIÁRIA</th>
+			<th scope="col">PATRIMÔNIO</th>
+			<th scope="col">VAL. PATRIMONIAL P/COTA</th>
+			<th scope="col">Nº DE COTAS</th>
+			<th scope="col">ÚLT. RENDIMENTO</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of fii; let i = index">
+			<td>{{item.id}}</td>
+			<td [ngClass]="(item.variacao >= 0) ? 'subir' : 'descer'" [routerLink]="['/fii',item.name] ">
+				<mat-icon *ngIf="item.variacao > 0">trending_up</mat-icon>
+				<mat-icon *ngIf="item.variacao == 0">trending_flat</mat-icon>
+				<mat-icon *ngIf="item.variacao < 0">trending_down</mat-icon>
+				{{item.name}}
+			</td>
+			<td>{{item.price | customNumber}}</td>
+			<td>{{item.dividendPercent |customNumber}}</td>
+			<td>{{item.precoSobreVP|customNumber}}</td>
+			<td>{{item.valorEmCaixa| customNumber}}</td>
+			<td>{{item.ndeCotistas | customNumberFormat}}</td>
+			<td>{{item.dyCagr3Anos | customNumber}}</td>
+			<td>{{item.liquidezMediaDiaria | customNumberFormat}}</td>
+			<td>{{item.patrimonio | customNumberFormat}}</td>
+			<td>{{item.valorPatrimonialPorCota | customNumber}}</td>
+			<td>{{item.ndeCotas | customNumberFormat}}</td>
+			<td>{{item.dividendLast | customNumber}}</td>
+		</tr>
+	</tbody>
+</table>
+<ngb-pagination [collectionSize]="240" [maxSize]="5" [(page)]="page" aria-label="Default pagination" (click)="paginator()"/>

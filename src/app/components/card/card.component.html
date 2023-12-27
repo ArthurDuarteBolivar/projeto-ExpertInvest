@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-item">
+        <span class="uppercase description">RENDIM. MÉDIO (24M)</span>
+        <span class="sub-description">{{fii.rendimentoMedio24M| customNumber:8}}</span>
+    </div>
+    <div class="card-item">
+        <span class="uppercase description">TAXAS ADMINISTRAÇÃO</span>
+        <span class="sub-description" *ngIf="fii.taxaAdministracao != 0"><span
+                class="icon">R$</span>{{fii.taxaAdministracao}}% a.a</span>
+        <span class="sub-description" *ngIf="fii.taxaAdministracao == 0"><span class="icon">R$</span>-% a.a</span>
+    </div>
+    <div class="card-item">
+        <span class="uppercase description">LIQUIDEZ MÉDIA DIÁRIA</span>
+        <span class="sub-description"><span
+                class="icon">R$</span>{{fii.liquidezMediaDiaria|customNumberFormat}}</span>
+    </div>
+    <div class="card-item">
+        <span class="uppercase description">PARTICIPAÇÃO NO IFIX</span>
+        <span class="sub-description">{{fii.participacaoNoInfix| customNumber:3}}%</span>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<main class="dy-container">
+    <div class="dy-area">
+        <div class="area">
+            <h1 class="uppercase">NEGOCIAÇÕES DO {{fii.name}}</h1>
+            <div class="card-body">
+                <h1 class="uppercase">OUTUBRO / <span>2023</span></h1>
+                <div>
+                    <div>
+                        <span class="uppercase">TOTAL</span>
+                        <span>{{fii.totalNegociacoes}}</span>
+                    </div>
+                    <div>
+                        <span class="uppercase">VOLUME (<span class="icon">R$</span>)</span>
+                        <span>{{fii.volumeNegociacoes| customNumberFormat}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dy-info">
+        <h1 class="uppercase">último rendimento</h1>
+        <h1 class="uppercase"><span class="icon">R$</span>{{fii.dividendLast | customNumber:4}}</h1>
+        <div class="d-flex justify-content-between">
+            <div class="sub-info">
+                <span class="uppercase">data base</span>
+                <span>{{fii.dataBaseLast | date: "d/M/YYY"}}</span>
+            </div>
+            <div class="sub-info">
+                <span class="uppercase">data pagamento</span>
+                <span>{{fii.dataPagamentoLast | date: "d/M/YYY"}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="dy-info">
+        <h1 class="uppercase">próximo rendimento</h1>
+        <h1 class="uppercase" *ngIf="fii.dividendNext != 0"><span class="icon">R$</span>{{fii.dividendNext|
+            customNumber:4}}</h1>
+        <h1 class="uppercase" *ngIf="fii.dividendNext == 0"><span class="icon">R$</span>-</h1>
+        <div class="d-flex justify-content-between">
+            <div class="sub-info">
+                <span class="uppercase">data base</span>
+                <span *ngIf="fii.dataBaseNext != 1672542000000">{{fii.dataBaseNext |date: "d/M/YYY"}}</span>
+                <span *ngIf="fii.dataBaseNext == 1672542000000">-</span>
+            </div>
+            <div class="sub-info">
+                <span class="uppercase">data pagamento</span>
+                <span *ngIf="fii.dataPagamentoNext != 1672542000000">{{fii.dataPagamentoNext|date:
+                    "d/M/YYY"}}</span>
+                <span *ngIf="fii.dataPagamentoNext == 1672542000000">-</span>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,80 @@
+@import "../../../app/variaveis.scss";
+
+.top-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+    .info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem 0;
+        color: black;
+        font-size: 1.5rem;
+        vertical-align: middle;
+        line-height: 2rem;
+        margin: 0.5rem 0;
+        font-weight: 800;
+
+        .description {
+            font-size: 0.8rem;
+            line-height: 1rem;
+            font-weight: 500;
+        }
+
+        .title {
+            font-size: .9rem;
+            line-height: .9rem;
+            display: block;
+            font-weight: 400;
+        }
+
+        .sub-title {
+            font-size: .8rem;
+            line-height: .9rem;
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+    }
+
+    .info:not(:first-child) {
+        border-left: 1px solid grey;
+    }
+
+    .especial {
+        border-radius: 0.3rem;
+        background-color: $cor-fundo !important;
+        color: #fff;
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 1300px) {
+    .top-info{
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .top-info{
+        display: grid !important;
+        grid-template-columns: 1fr  1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        .info:not(:first-child) {
+            border-left: none;
+        }
+        .especial{
+            grid-area: 1 / 1 / 2 / 3;
+        }
+    }
+}

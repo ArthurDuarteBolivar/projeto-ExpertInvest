@@ -1,0 +1,134 @@
+@import "../../../app/variaveis.scss";
+
+.dy-area {
+    width: 35%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0;
+
+    .area {
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: $cor-primaria;
+        }
+
+        .card-body {
+            h1 {
+                font-weight: 900;
+                font-size: 2.5rem !important;
+                color: $cor-fundo;
+
+                span {
+                    font-weight: 100;
+                }
+            }
+
+            div {
+                display: flex;
+                justify-content: space-around;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+
+                    span:nth-child(1) {
+                        font-weight: 900;
+                        font-size: .8rem !important;
+                        color: $cor-fundo;
+                        text-align: center;
+                    }
+
+                    span:nth-child(2) {
+                        font-size: 1.5rem !important;
+                        font-weight: 300;
+                        color: $cor-fundo;
+                        text-align: center;
+                        line-height: 1.15;
+                        text-size-adjust: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dy-info {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .2);
+    background: rgb(85, 209, 225);
+    background: linear-gradient(180deg, rgb(17, 200, 224) 0%, rgba(3, 81, 174, 1) 100%);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 30% !important;
+
+    h1:nth-child(1) {
+        color: white;
+        font-size: 1.4rem;
+        font-weight: 300;
+        line-height: 1.15;
+        text-size-adjust: 100%;
+    }
+
+    h1:nth-child(2) {
+        font-size: 2.5rem !important;
+        font-weight: 900;
+        color: white;
+        line-height: 1.15;
+        text-size-adjust: 100%;
+    }
+
+    .sub-info {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            color: white;
+        }
+
+        span:nth-child(1) {
+            font-size: 1rem !important;
+            font-weight: 100;
+        }
+
+        span:nth-child(2) {
+            line-height: 1rem !important;
+            font-size: 1.5rem !important;
+            font-weight: bolder;
+        }
+    }
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.dy-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1300px) {
+    // main{
+    //     display: flex;
+    //     flex-direction: row !important;
+    // }
+}
+
+@media screen and (max-width: 780px) {
+    .dy-container{
+        display: flex;
+        flex-direction: column !important;
+        gap: 20px;
+        .dy-area{
+            width: 100%;
+        }
+    }
+    .dy-info{
+        width: 100% !important;
+    }
+
+}
+
+

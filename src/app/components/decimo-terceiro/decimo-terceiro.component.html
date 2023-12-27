@@ -1,1 +1,327 @@
-<p>decimo-terceiro works!</p>
+<app-header-page *ngIf="!isResult" title="Calculadora de Décimo Terceiro Salário"
+  description="Descubra o valor exato que você deve receber de décimo terceiro salário com a Calculadora de 13º!"></app-header-page>
+
+<main *ngIf="!isResult" class="calc">
+  <h3 class="title">Cálculo de 13° Salário</h3>
+  <div class="form-container">
+    <mat-form-field floatLabel="always">
+      <mat-label>Salário bruto</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="salario" mask="separator.2"
+        thousandSeparator=".">
+      <span matTextPrefix>R$&nbsp;</span>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Número de dependentes *</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="dependentes">
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" ngbDropdown>
+      <mat-label>Número de meses trabalhados *</mat-label>
+      <input matInput type="text" class="example-right-align" placeholder="0" [(ngModel)]="mesesTrabalhados">
+    </mat-form-field>
+
+    <!-- <mat-form-field floatLabel="always" ngbDropdown> -->
+    <div ngbDropdown class="d-inline-block dropdown-ng">
+      <button type="button" class="btn btn-outline-primary dropdown" id="dropdownBasic1" ngbDropdownToggle>
+        {{parcela}}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" width="100%">
+        <button ngbDropdownItem (click)="parcela = 'Única'">Única</button>
+        <button ngbDropdownItem (click)="parcela = 'Primeira'">Primeira</button>
+        <button ngbDropdownItem (click)="parcela = 'Segunda'">Segunda</button>
+      </div>
+    </div>
+    <!-- </mat-form-field> -->
+
+
+    <div class="buttons">
+      <button (click)="CalcularDecimoTerceiro()">Calcular</button>
+      <button (click)="Limpar()">Limpar</button>
+    </div>
+  </div>
+</main>
+
+
+<section *ngIf="!isResult" class="blog">
+  <article>
+
+    <p>Confira a seguir como fazer o cálculo do 13º salário, além de tirar todas as suas dúvidas referentes ao assunto.
+    </p>
+
+    <h3>Como utilizar a calculadora de décimo terceiro salário</h3>
+
+    <ol class="list-first">
+      <li>Adicione o valor bruto do seu salário;</li>
+      <li>Informe o número de dependentes;</li>
+      <li>Coloque o número de meses trabalhados;</li>
+      <li>Escolha entre primeira, segunda ou parcela única do 13º salário e clique em “Calcular”.</li>
+    </ol>
+
+    <p>Pronto, o resultado é o valor do Décimo Terceiro salário a ser recebido da empresa.</p>
+
+  </article>
+  <article>
+    <h2>Como fazer cálculo na calculadora de 13º salário</h2>
+
+    <p>Para usar a calculadora de 13º da Mobills, que é a forma mais simples e rápida de fazer o cálculo do seu 13° salário, devemos preencher alguns campos.</p>
+  
+    <p>Confira abaixo quais são e o que significa cada um dos campos:</p>
+  
+    <ul class="list">
+      <li><strong>Salário bruto:</strong> O seu salário bruto é o valor total e sem descontos do que você recebe mensalmente;</li>
+      <li><strong>Número de meses trabalhados:</strong> No total de meses trabalhados, você deve considerar aqueles que trabalhou por 15 dias ou mais que isso;</li>
+      <li><strong>Número de dependentes:</strong> Aqui, você deve informar o número de pessoas que dependem de você, como um filho;</li>
+      <li><strong>Parcela:</strong> Por último, em parcela, informe se é a primeira, segunda ou se você recebe o 13º em parcela única.</li>
+    </ul>
+  
+    <p>Depois de preencher tudo basta clicar no botão “calcular” para obter o resultado do seu décimo terceiro.</p>  
+  </article>
+  <article>
+    <h2>O que é o 13º salário?</h2>
+
+    <p>O décimo terceiro salário é uma gratificação de fim de ano que foi instituída no Brasil pela Lei 4.090, e garante que o trabalhador CLT receba o correspondente a 1/12 da remuneração por mês trabalhado.</p>
+  
+    <p>Ou seja, é como se fosse o pagamento de um salário extra ao funcionário no fim de ano, por isso o nome décimo terceiro salário.</p>
+  
+    <p>A partir de quinze dias de serviço, o trabalhador já passa ter direito a receber o seu 13º salário. Além disso, aposentados e pensionistas do INSS também estão aptos para receber a gratificação.</p>
+  
+  </article>
+  <article>
+    <h1>Juros Simples vs. Juros Compostos</h1>
+    <p>No regime de juros simples, a taxa de juros incide apenas sobre o capital inicial. Isso significa que os juros
+      são calculados apenas com base na quantia original investida ou emprestada.</p>
+    <p>As principais diferenças entre juros simples e compostos podem ser resumidas da seguinte forma:</p>
+  </article>
+  <article>
+    <h2>Como calcular o décimo terceiro salário?</h2>
+
+  <p>Calcular o décimo terceiro é bem simples. Primeiro, você divide o seu salário integral por 12 e depois multiplica o resultado pelo número de meses trabalhados (durante o ano).</p>
+
+  <p>As horas extras, adicionais de insalubridade e noturno e as comissões também entram no cálculo do 13° salário.</p>
+
+  <p>Por exemplo: se o seu salário integral é de R$ 3.200 e você trabalha há apenas 5 meses na empresa, então, será dividido 3.200 por 12, e esse resultado você multiplicará por cinco.</p>
+
+  <p>O resultado final do valor do décimo terceiro será de R$ 1.333,33, que corresponde ao montante que você deve receber de 13º salário.</p>
+
+  <p>Uma ótima dica, no entanto, é utilizar a Calculadora de Décimo Terceiro da Mobills, pois essa ferramenta foi pensada justamente para facilitar esse processo!</p>
+
+  <p>Confira a seguir como calcular a parcela única, primeira e segunda parcela do décimo terceiro.</p>
+
+  </article>
+  <article>
+    <h2>Como calcular a parcela única do décimo terceiro</h2>
+
+    <p>Para calcular a parcela única do décimo terceiro, confira no seu contracheque o valor bruto do seu salário, sem os valores descontados.</p>
+  
+    <p>Se você ganha, por exemplo, R$2500, mas com as deduções recebe o valor de R$2220, considere o valor de R$2500 para o cálculo.</p>
+  
+    <p>Lembre-se, porém, de fazer os descontos de INSS e IRRF do valor.</p>
+  
+    <p>Para os descontos do INSS, os valores atuais da tabela do INSS, que devem ser levados em consideração, são os seguintes:</p>
+  
+    <ul class="list">
+      <li>Até R$1.320,00: 7,50%;</li>
+      <li>R$ 1.320,01 a R$ 2.571,29: 9%;</li>
+      <li>R$ 2.571,30 até R$ 3.856,94: 12%;</li>
+      <li>R$ 3.856,95 até R$ 7.507,49: 14%.</li>
+    </ul>
+  
+    <p>Já para os descontos do Imposto de Renda Retido na Fonte (IRRF), você deve considerar a tabela do IR atualizada com os seguintes valores:</p>
+  
+    <ul class="list">
+      <li>Até R$ 2.112,00: Isento;</li>
+      <li>R$ 2.112,01 até 2.826,65: 7,50%;</li>
+      <li>R$ 2.826,66 até 3.751,05: 15%;</li>
+      <li>R$ 3.751,06 até 4.664,68: 22,50%;</li>
+      <li>A partir de 4.664,68: 27,50%.</li>
+    </ul>
+  
+    <p>Este cálculo, por sua vez, deve ser feito de acordo com o salário já descontado do INSS.</p>
+  
+  </article>
+  <article>
+    <h2>Primeira parcela do 13º</h2>
+
+    <p>Para fazer o cálculo do décimo terceiro relativo à primeira parcela, basta dividir o valor do salário por 12, multiplicar o resultado pelo número de meses que foram trabalhados e fazer a divisão por 2.</p>
+  
+    <p>Exemplo: Suponha que você recebe um salário mínimo. Com esse valor, o cálculo deve ficar da seguinte forma:</p>
+  
+    <p>R$1320 % 2 = R$ 660</p>
+  
+    <p>Ou também: R$ 1320 x 50% = R$ 660.</p>
+  
+    <p>Com isso, a primeira parcela do décimo terceiro de quem recebe 1 salário mínimo é R$ 660.</p>
+  
+    <p>Lembre-se, no entanto, que os descontos relativos ao INSS e Imposto de Renda serão deduzidos apenas da segunda parcela.</p>
+  
+  </article>
+  <article>
+    <h2>Segunda parcela do 13º</h2>
+
+    <p>A segunda parcela do décimo terceiro deve ter como base de cálculo o salário de dezembro menos o valor adiantado da primeira parcela.</p>
+  
+    <p>Saiba como acontece o cálculo:</p>
+  
+    <p>Primeiro, calcula-se o valor do salário, com os devidos descontos do INSS e IRRF:</p>
+  
+    <p>R$ 1320 – descontos do INSS e IRRF = R$ 1221</p>
+  
+    <p>No cálculo anterior, tem-se o valor líquido do salário mínimo com o desconto apenas do INSS, uma vez que quem recebe um salário mínimo não paga o IR.</p>
+  
+    <p>O cálculo final, com o valor do INSS e da primeira parcela descontados, fica da seguinte forma:</p>
+  
+    <p>R$ 1221 – 660 (valor pago na 1ª parcela) = R$ 561.</p>
+  
+    <p>Portanto, o valor pago após o cálculo de 13º relativo à segunda parcela, será de R$ 561.</p>
+  
+    <p>Além disso, se a data máxima de pagamento da gratificação cair em um domingo ou feriado, o empregador deve antecipar o pagamento para o último dia útil anterior.</p>
+  
+    <p><strong>Atenção:</strong> o pagamento em uma única parcela é ilegal, estando o empregador sujeito à multa. Muitas pessoas não sabem disso e geralmente querem pagar os funcionários em uma única parcela em dezembro.</p>
+  
+  </article>
+  <article>
+    <h2>Quem tem direito ao 13º salário?</h2>
+
+    <p>Todos os trabalhadores com carteira assinada, trabalhadores rurais, temporários, funcionários públicos e empregados domésticos têm direito de receber o 13º salário.</p>
+  
+    <p>Além disso, aposentados têm direito ao décimo também, mas o recebem antes.</p>
+  
+    <p>No entanto, se o trabalhador tiver mais de 15 faltas não justificadas em um mês de trabalho, ele deixa de ter direito a receber o benefício.</p>
+  
+    <p>Dessa maneira, o trabalhador também terá direito a receber a gratificação quando seu contrato de trabalho por encerrado em qualquer modalidade, exceto dispensa por justa causa.</p>
+  
+    <p>Por isso, quem se enquadra em uma dessas categorias de trabalho realmente precisa saber calcular o 13º salário.</p>
+  
+  </article>
+  <article>
+    <h2>Quando o 13º salário deve ser pago?</h2>
+
+    <p>O décimo terceiro é pago, segundo a legislação, em datas fixas. Dentro desse prazo definindo o empregador deve pagar mesmo se houver o parcelamento. Confira:</p>
+  
+    <ul class="list">
+      <li><strong>Primeira parcela:</strong> deve ser paga entre o dia 1º de fevereiro e o dia 30 de novembro.</li>
+      <li><strong>Segunda parcela:</strong> deve ser paga até o dia 20 de dezembro.</li>
+    </ul>
+  </article>
+  <article>
+    <h2>Décimo Terceiro: O que acontece se a empresa não o pagar no prazo?</h2>
+
+    <p>Se a primeira parcela do décimo terceiro não for depositada até o dia 30 de novembro, a empresa pode ser multada. Essa multa é de R$170 por empregado e, em caso de reincidência, o valor dobra.</p>
+  
+    <p>Para isso, é preciso que o trabalhador denuncie a empresa ao Ministério do Trabalho para que, assim, seja feita uma fiscalização. Além disso, o valor é pago a este ministério, e não ao colaborador.</p>
+  
+  
+  </article>
+  <article>
+
+    <h2>É possível antecipar o Décimo Terceiro salário?</h2>
+
+    <p>Existem duas formas de fazer um adiantamento do décimo terceiro salário: solicitando ao empregador ou fazendo um empréstimo com garantia.</p>
+  
+    <p>Em ambos os casos, o trabalhador receberá menos do que receberia no fim do ano, tendo em vista que ele terá que pagar uma taxa pelo adiantamento.</p>
+  
+  </article>
+  <article>
+
+    <h2>Vale a pena utilizar a Calculadora de Décimo Terceiro?</h2>
+
+    <p>A Calculadora de Décimo Terceiro salário é muito útil, pois facilita o cálculo de quanto receberemos da empresa para a qual trabalhamos.</p>
+  
+    <p>Como esse é um direito, é muito importante que saibamos como ele funciona. Além disso, esse valor pode ajudar no nosso orçamento.</p>
+  
+    <p>Por isso, utilize a Calculadora de 13° quantas vezes precisar para fazer suas simulações, pois a ferramenta é 100% gratuita.</p>
+  
+  </article>
+</section>
+
+
+
+
+<main *ngIf="isResult" class="result">
+  <button (click)="Voltar()"><i class="fa-solid fa-arrow-left"></i> Fazer outro cálculo</button>
+  <section class="result__container">
+    <h1>Meu cálculo</h1>
+    <div>
+      <div class="card">
+        <span class="title">Salário bruto</span>
+        <b>{{salario | currency:'BRL':'symbol':'1.2-2'}}</b>
+      </div>
+      <div class="card">
+        <span class="title">Dependentes</span>
+        <b>{{dependentes}}</b>
+      </div>
+      <div class="card">
+        <span class="title">Meses trabalhados</span>
+        <b>{{mesesTrabalhados}}</b>
+      </div>
+      <div class="card">
+        <span class="title">Parcela</span>
+        <b>{{parcela}}</b>
+      </div>
+    </div>
+  </section>
+  <section class="result__container max-height">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Evento</th>
+          <th scope="col">Ref.</th>
+          <th scope="col">Proventos</th>
+          <th scope="col">Descontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Valor Parcela Bruto</th>
+          <td>-</td>
+          <td>{{resultado | currency:'BRL':'symbol':'1.2-2'}}</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th>Abono pecuniário</th>
+          <td>-</td>
+          <td></td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th>1/3 Abono pecuniário</th>
+          <td>-</td>
+          <td></td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th>Adiantamento 1ª Parcela 13º</th>
+          <td>-</td>
+          <td></td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th>INSS</th>
+          <td>{{porcentagemINSS}}%</td>
+          <td>-</td>
+          <td>{{INSS | currency:'BRL':'symbol':'1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th>IRRF</th>
+          <td>{{porcentagemIR}}%</td>
+          <td>-</td>
+          <td>{{impostoDeRenda | currency:'BRL':'symbol':'1.2-2'}}</td>
+        </tr>
+        <tr>
+          <th>Totais</th>
+          <td>{{resultado | currency:'BRL':'symbol':'1.2-2'}}</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th>DÉCIMO TERCEIRO LÍQUIDO</th>
+          <td>{{resultado! - INSS! - impostoDeRenda! | currency:'BRL':'symbol':'1.2-2'}}</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </section>
+  <section class="result__container_second">
+  </section>
+</main>

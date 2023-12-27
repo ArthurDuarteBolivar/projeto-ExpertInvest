@@ -1,6 +1,203 @@
-@import "../../../styles.scss";
+@import "../../variaveis.scss";
 
 
-nav{
+mat-icon {
+    color: white;
+}
+
+nav {
     background-color: $cor-fundo;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90.66px;
+    transition: height 200ms ease-in;
+
+    .container {
+        padding: 15px 100px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: space-between;
+
+        .nav-link {
+            background-color: white;
+            height: 100%;
+
+            img {
+                // width: 200px;
+                max-height: 100%;
+            }
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+
+            ul {
+                margin: 0;
+
+                li {
+
+                    float: left;
+                    padding: 0;
+                    list-style: none;
+
+                    a {
+                        transition: background-color .3s;
+                        font-size: 1rem;
+                        display: block;
+                        padding: 0 15px;
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: white;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.small {
+    height: 70px;
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .7);
+}
+
+
+@media screen and (max-width: 1000px) {
+    nav {
+        .container {
+            padding: 15px 5px;
+            padding-right: 30px;
+        }
+    }
+}
+
+
+
+.offcanvas-body {
+    .links {
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            li {
+                border-radius: 7px;
+                float: left;
+                padding: 0;
+                list-style: none;
+                background-color: $cor-fundo;
+                text-align: left;
+
+                a {
+                    transition: background-color .3s;
+                    font-size: 1rem;
+                    display: block;
+                    padding: 10px 15px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: white;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    input {
+        padding: 10px 5px;
+        width: 100%;
+    }
+}
+
+.modal-footer {
+    mat-icon {
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.btn-custom {
+    background-color: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: black;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow: auto;
+    width: 80%;
+    margin: auto;
+
+    .info {
+        border-bottom: 1px solid gray;
+        margin-bottom: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h1 {
+            align-self: flex-start;
+            font-size: .9rem;
+            font-weight: 700;
+            line-height: 1rem;
+            color: $cor-fundo;
+            span{
+                margin-left: 10px;
+            }
+        }
+
+        .info_container {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            span{
+                color: $cor-fundo;
+                font-size: 1rem;
+                font-weight: 600;
+                margin-right: 20px;
+            }
+            h1 {
+                color: black;
+                font-size: 1.1rem;
+                font-weight: bold;
+                line-height: 1rem;
+            }
+        }
+    }
+}
+
+.teste{
+    z-index: 10;
 }

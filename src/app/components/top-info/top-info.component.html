@@ -1,0 +1,43 @@
+<div class="top-info">
+    <div class="info especial">
+        <span class="title">VALOR ATUAL</span>
+        <span><span class="icon">R$ </span>{{info.curPrc| customNumberFormat}}</span>
+        <span class="description d-flex align-items-center">
+            <mat-icon *ngIf="info.prcFlcn > 0">trending_up</mat-icon>
+            <mat-icon *ngIf="info.prcFlcn == 0">trending_flat</mat-icon>
+            <mat-icon *ngIf="info.prcFlcn < 0">trending_down</mat-icon>
+            {{info.prcFlcn | customNumberFormat}}%</span>
+    </div>
+    <div class="info">
+        <span class="title">MIN. 52 SEMANAS</span>
+        <span><span class="icon">R$ </span>{{info.min52| customNumberFormat}}</span>
+        <span class="sub-title">MIN. MÊS</span>
+        <span class="description"><span class="icon">R$ </span>{{info.minMonth| customNumberFormat}}</span>
+    </div>
+    <div class="info">
+        <span class="title">MÁX. 52 SEMANAS</span>
+        <span><span class="icon">R$ </span>{{info.max52 | customNumberFormat}}</span>
+        <span class="sub-title">MÁX. MÊS</span>
+        <span class="description"><span class="icon">R$ </span>{{info.maxMonth| customNumberFormat}}</span>
+    </div>
+    <div class="info">
+        <span class="title">DIVIDEND YIELD</span>
+        <span>{{info.dividendPercent| customNumberFormat}}%</span>
+        <span class="sub-title">ÚLTIMOS 12 MESES</span>
+        <span class="description"><span class="icon">R$ </span>{{info.dividendLast12| customNumber:4}}</span>
+    </div>
+    <div class="info">
+        <span class="title d-flex align-items-center">
+            <mat-icon *ngIf="info.valorization12 > 0">trending_up</mat-icon>
+            <mat-icon *ngIf="info.valorization12 == 0">trending_flat</mat-icon>
+            <mat-icon *ngIf="info.valorization12 < 0">trending_down</mat-icon>
+            VALORIZAÇÃO (12M)</span>
+        <span>{{info.valorization12| customNumberFormat}}%</span>
+        <span class="sub-title">MÊS ATUAL</span>
+        <span class="description d-flex align-items-center">
+            <mat-icon *ngIf="info.valorizationMonth > 0">trending_up</mat-icon>
+            <mat-icon *ngIf="info.valorizationMonth == 0">trending_flat</mat-icon>
+            <mat-icon *ngIf="info.valorizationMonth < 0">trending_down</mat-icon>
+            {{info.valorizationMonth| customNumberFormat}}%</span>
+    </div>
+</div>

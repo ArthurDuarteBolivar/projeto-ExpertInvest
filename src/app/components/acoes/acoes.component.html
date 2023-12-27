@@ -1,0 +1,37 @@
+<app-header-page title="{{fiisB3.Trad[0].scty.symb}}" description="{{fii.nomeCompleto}}" icon="false"></app-header-page>
+
+
+<section class="container">
+    <app-top-info [info]="info"></app-top-info>
+    <div class="wrapper">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline-primary uppercase" id="dropdownBasic1" ngbDropdownToggle>
+                   {{timeLineChart}}
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button class="uppercase" (click)="timeLineChart = '1 dia'"  (click)="changeGraph()" ngbDropdownItem>1 dia</button>
+                    <button class="uppercase" (click)="timeLineChart = 'max'" (click)="changeGraph()" ngbDropdownItem>máx</button>
+                    <!-- <button class="uppercase" ngbDropdownItem>{{timeLineChart}}</button> -->
+                </div>
+            </div>
+        </div>
+        <ngx-charts-line-chart [legend]="legend" [showXAxisLabel]="showXAxisLabel" [scheme]="colorScheme"
+            [showYAxisLabel]="showYAxisLabel" [xAxis]="true" [yAxis]="true" [autoScale]="true" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)" style="fill: #d1d1d1;" [timeline]="true">
+        </ngx-charts-line-chart>
+    </div>
+    <app-bottom-info [fii]="fii"></app-bottom-info>
+    <app-dy-container [fii]="fii"></app-dy-container>
+    <div class="wrapper">
+        <!-- <ngx-charts-bar-vertical-2d [scheme]="colorScheme" [results]="multiDividendos" [xAxis]="true" [yAxis]="true"
+            [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" [showGridLines]="true" [roundDomains]="true">
+        </ngx-charts-bar-vertical-2d> -->
+        <div id="chart-container">
+
+        </div>
+    </div>
+    <app-card [fii]="fii"></app-card>
+</section>

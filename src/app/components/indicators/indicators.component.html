@@ -1,0 +1,476 @@
+<section>
+    <h1 class="uppercase">INDICADORES DA {{indicadores.name}}</h1>
+    <main class="container">
+        <span class="uppercase">INDICADORES DE VALUATION</span>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">D.Y</span>
+                <div class="value_container">
+                    <strong>{{indicadores.dividendYield | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O Dividend Yield (D.Y) é uma métrica financeira que expressa a relação entre os dividendos anuais pagos por uma empresa e seu preço de mercado por ação. É frequentemente utilizado por investidores para avaliar o retorno de investimento proporcionado por dividendos."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é D.Y">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/L</span>
+                <div class="value_container">
+                    <strong>{{indicadores.priceProfit | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/L (Preço/Lucro) é uma métrica financeira que compara o preço atual da ação com o lucro por ação (LPA) da empresa. Ele fornece uma medida da avaliação do mercado em relação aos ganhos da empresa. Quanto menor o P/L, potencialmente mais atrativa a ação pode ser considerada."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é P/L (Preço/Lucro)">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">PEG Ratio</span>
+                <div class="value_container">
+                    <strong>{{indicadores.pegRatio | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O PEG Ratio (Price/Earnings to Growth) é uma métrica que relaciona o P/E Ratio com a taxa de crescimento dos ganhos. Ele é utilizado para avaliar se uma ação está sobrevalorizada ou subvalorizada com base no crescimento esperado."
+                            triggers="mouseenter:mouseleave" popoverTitle="O que é PEG Ratio">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/VP</span>
+                <div class="value_container">
+                    <strong>{{indicadores.priceAssetValue | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/VP (Preço/Valor Patrimonial) compara o preço de mercado da ação com o valor patrimonial por ação. É utilizado para avaliar se uma ação está sobrevalorizada ou subvalorizada em relação ao seu valor contábil."
+                            triggers="mouseenter:mouseleave" popoverTitle="O que é P/VP">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">EV/EBITDA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.enterpriseValueEbitda | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O EV/EBITDA (Enterprise Value / EBITDA) é uma medida de valuation que compara o valor da empresa (incluindo dívidas) com seu lucro antes de juros, impostos, depreciação e amortização. É utilizado para avaliar a eficiência operacional da empresa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é EV/EBITDA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">EV/EBIT</span>
+                <div class="value_container">
+                    <strong>{{indicadores.enterpriseValueEbit | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O EV/EBIT (Enterprise Value / EBIT) é uma medida de valuation que compara o valor da empresa (incluindo dívidas) com seu lucro antes de juros e impostos. É utilizado para avaliar a eficiência operacional da empresa, desconsiderando a depreciação e amortização."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é EV/EBIT">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/EBITDA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.priceEbitda | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/EBITDA (Preço/EBITDA) compara o preço de mercado da ação com o lucro antes de juros, impostos, depreciação e amortização. É utilizado para avaliar a relação entre o preço da ação e a geração operacional de caixa da empresa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é P/EBITDA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">VPA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.assetValue | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O VPA (Valor Patrimonial por Ação) representa o valor do patrimônio líquido da empresa dividido pelo número de ações em circulação. É utilizado para avaliar o valor contábil da empresa por ação."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é VPA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/Ativo</span>
+                <div class="value_container">
+                    <strong>{{indicadores.priceActive | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/Ativo (Preço/Ativo) compara o preço de mercado da ação com o total de ativos da empresa. É utilizado para avaliar como o mercado precifica os ativos da empresa em relação ao preço da ação."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é P/Ativo">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">LPA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.profitShares | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O LPA (Lucro por Ação) representa o lucro líquido da empresa dividido pelo número de ações em circulação. É utilizado para avaliar a rentabilidade por ação e a capacidade da empresa de gerar lucro para os acionistas."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é LPA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/SR</span>
+                <div class="value_container">
+                    <strong>{{indicadores.priceNetRevenue | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/SR (Preço/Receita Líquida) compara o preço de mercado da ação com a receita líquida da empresa. É utilizado para avaliar como o mercado precifica a empresa em relação à sua capacidade de gerar receita."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é P/SR">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/Cap. Giro</span>
+                <div class="value_container">
+                    <strong>{{indicadores.workingCapitalPrice | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/Cap. Giro (Preço/Capital de Giro) compara o preço de mercado da ação com o capital de giro da empresa. É utilizado para avaliar como o mercado precifica a empresa em relação à eficiência de seu ciclo de caixa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é P/Cap. Giro">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/Ativo Circ. Liq.</span>
+                <div class="value_container">
+                    <strong>{{indicadores.currentAssetsPrice | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O P/Ativo Circ. Liq. (Preço/Ativo Circulante Líquido) compara o preço de mercado da ação com o ativo circulante líquido da empresa. É utilizado para avaliar como o mercado precifica a empresa em relação à sua liquidez operacional."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é P/Ativo Circ. Liq.">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </main>
+    <main class="container">
+        <span class="uppercase">INDICADORES DE ENDIVIDAMENTO</span>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">Dív. Líquida/P/L</span>
+                <div class="value_container">
+                    <strong>{{indicadores.divideAssets | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A relação entre a Dívida Líquida e o P/L (Preço/Lucro) é uma métrica que compara a dívida líquida da empresa com seu preço de mercado em relação ao lucro por ação. Pode ser utilizada para avaliar a alavancagem financeira da empresa em relação ao seu valor de mercado."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="Dívida Líquida/P/L">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">Dív. Líquida/EBITDA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.divideEbtida | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A relação entre a Dívida Líquida e o EBITDA é uma métrica que compara a dívida líquida da empresa com seu lucro antes de juros, impostos, depreciação e amortização. Pode ser utilizada para avaliar a capacidade de a empresa pagar sua dívida usando sua geração operacional de caixa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="Dívida Líquida/EBITDA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">Dív. Líquida/EBIT</span>
+                <div class="value_container">
+                    <strong>{{indicadores.divideEbit | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A relação entre a Dívida Líquida e o EBIT (Lucro antes de Juros e Impostos) é uma métrica que compara a dívida líquida da empresa com seu lucro operacional. Pode ser utilizada para avaliar a capacidade de a empresa pagar sua dívida usando seu lucro operacional."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="Dívida Líquida/EBIT">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/L Ativos</span>
+                <div class="value_container">
+                    <strong>{{indicadores.assetsActive | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A relação entre o P/L (Preço/Lucro) e os Ativos é uma métrica que compara o preço de mercado da ação com o lucro por ação em relação aos ativos totais da empresa. Pode ser utilizada para avaliar como o mercado precifica o lucro da empresa em relação a seus ativos."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="P/L Ativos">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">P/L Ativos</span>
+                <div class="value_container">
+                    <strong>{{indicadores.assetsActive | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A relação entre o P/L (Preço/Lucro) e os Ativos é uma métrica que compara o preço de mercado da ação com o lucro por ação em relação aos ativos totais da empresa. Pode ser utilizada para avaliar como o mercado precifica o lucro da empresa em relação a seus ativos."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="P/L Ativos">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">Liq. Corrente</span>
+                <div class="value_container">
+                    <strong>{{indicadores.currentLiquidity | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A Liquidez Corrente é uma métrica que compara os ativos circulantes (disponíveis em curto prazo) com os passivos circulantes (dívidas de curto prazo). Pode ser utilizada para avaliar a capacidade da empresa de cumprir suas obrigações de curto prazo com seus ativos disponíveis."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é Liquidez Corrente">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <main class="container">
+        <span class="uppercase">INDICADORES DE EFICIÊNCIA</span>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">M. Bruta</span>
+                <div class="value_container">
+                    <strong>{{indicadores.grossMargin | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A Margem Bruta é uma métrica que compara a receita total da empresa com o custo dos bens vendidos (COGS). Ela expressa a porcentagem de lucro bruto em relação à receita total."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é Margem Bruta">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">M. EBITDA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.marginEbitda | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A Margem EBITDA é uma métrica que expressa a porcentagem de lucro antes de juros, impostos, depreciação e amortização (EBITDA) em relação à receita total. É uma medida da eficiência operacional da empresa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é Margem EBITDA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">M. EBIT</span>
+                <div class="value_container">
+                    <strong>{{indicadores.marginEbit | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A Margem EBIT é uma métrica que expressa a porcentagem de lucro operacional (EBIT) em relação à receita total. Ela fornece insights sobre a rentabilidade das operações da empresa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é Margem EBIT">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">M. Líquida</span>
+                <div class="value_container">
+                    <strong>{{indicadores.netMargin | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A Margem Líquida é uma métrica que compara o lucro líquido da empresa com sua receita total. Ela expressa a porcentagem de lucro líquido em relação à receita total."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é Margem Líquida">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <main class="container">
+        <span class="uppercase">INDICADORES DE RENTABILIDADE</span>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">ROE</span>
+                <div class="value_container">
+                    <strong>{{indicadores.roe | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O ROE (Return on Equity) é uma métrica que expressa a rentabilidade dos acionistas, mostrando quanto lucro líquido a empresa gera em relação ao patrimônio líquido. É uma medida da eficiência de utilização do capital próprio pelos acionistas."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é ROE">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">ROA</span>
+                <div class="value_container">
+                    <strong>{{indicadores.roa | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O ROA (Return on Assets) é uma métrica que expressa a eficiência da empresa na geração de lucro em relação aos seus ativos totais. É uma medida da rentabilidade dos ativos da empresa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é ROA">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">ROIC</span>
+                <div class="value_container">
+                    <strong>{{indicadores.roic | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O ROIC (Return on Invested Capital) é uma métrica que expressa a eficiência da empresa na geração de lucro em relação ao capital investido total, incluindo dívidas e patrimônio líquido. É uma medida da rentabilidade global da empresa."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é ROIC">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">Giro Ativos</span>
+                <div class="value_container">
+                    <strong>{{indicadores.assetTurnover | customNumberFormat}}</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="O Giro de Ativos é uma métrica que expressa a eficiência da empresa na utilização de seus ativos para gerar receita. Indica quantas vezes os ativos são convertidos em receita ao longo de um período."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é Giro Ativos">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <main class="container">
+        <span class="uppercase">INDICADORES DE CRESCIMENTO</span>
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">CAGR Receita 5 Anos</span>
+                <div class="value_container">
+                    <strong>{{indicadores.cagrRevenues | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A CAGR (Taxa de Crescimento Anual Composta) da Receita em 5 anos representa a taxa média de crescimento anual da receita da empresa ao longo de um período de 5 anos. É uma métrica que ajuda a avaliar a consistência do crescimento da receita ao longo do tempo."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é CAGR Receita 5 Anos">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="info_container">
+                <span class="uppercase">CAGR Lucros 5 Anos</span>
+                <div class="value_container">
+                    <strong>{{indicadores.cagrProfit | customNumberFormat}}%</strong>
+                    <div class="icons_value">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <mat-icon
+                            ngbPopover="A CAGR (Taxa de Crescimento Anual Composta) dos Lucros em 5 anos representa a taxa média de crescimento anual dos lucros da empresa ao longo de um período de 5 anos. É uma métrica que ajuda a avaliar a consistência do crescimento dos lucros ao longo do tempo."
+                            triggers="mouseenter:mouseleave"
+                            popoverTitle="O que é CAGR Lucros 5 Anos">help_outline</mat-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+</section>
