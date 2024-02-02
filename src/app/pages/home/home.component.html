@@ -261,7 +261,7 @@
     <div>
         <ng-container *ngFor="let item of news">
             <a [href]="item.url"  target="_blank">
-              <span>{{item.time | date: "dd/MM/yy, H:mm"}}</span>
+              <span>{{calcularDiferencaTempo(item.time)}}</span>
               <img [src]="item.image_src" alt="imagem">
               <span>{{item.title}}</span>
             </a>

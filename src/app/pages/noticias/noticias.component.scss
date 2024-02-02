@@ -15,6 +15,7 @@
         margin-bottom: 50px;
     }
     div{
+        margin-top: 20px;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -80,4 +81,9 @@
             transform: rotate(180deg);
         }
     }
+}
+
+
+mat-tab-group{
+    color: white !important;
 }

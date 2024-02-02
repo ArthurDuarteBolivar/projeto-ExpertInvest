@@ -108,11 +108,38 @@ export class HomeComponent implements OnInit {
     //   })
 
     // }
-    this.b3Service.getNew().subscribe(res => {
+    this.b3Service.getNew("business", 1).subscribe(res => {
       this.isLoaded = true;
       this.news = res
     })
     
+  }
+
+  calcularDiferencaTempo(dataString: string): string {
+    const agora = new Date();
+    const data = new Date(dataString);
+  
+    if (isNaN(data.getTime())) {
+      // Verifica se a conversão falhou
+      return 'Data inválida';
+    }
+  
+    const diferenca = agora.getTime() - data.getTime();
+  
+    const segundos = Math.floor(diferenca / 1000);
+    const minutos = Math.floor(segundos / 60);
+    const horas = Math.floor(minutos / 60);
+    const dias = Math.floor(horas / 24);
+  
+    if (dias > 0) {
+      return `${dias} dia${dias > 1 ? 's' : ''} atrás`;
+    } else if (horas > 0) {
+      return `${horas} hora${horas > 1 ? 's' : ''} atrás`;
+    } else if (minutos > 0) {
+      return `${minutos} minuto${minutos > 1 ? 's' : ''} atrás`;
+    } else {
+      return 'Agora mesmo';
+    }
   }
 
   

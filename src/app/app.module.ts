@@ -52,6 +52,7 @@ import { InvestimentoAcoesComponent } from './pages/investimento-acoes/investime
 import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { NoticiasComponent } from './pages/noticias/noticias.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { NoticiasComponent } from './pages/noticias/noticias.component';
     //   measurementId: "G-BZ2GG71QZ2"
     // }),
     // AngularFireAuthModule,
+    MatTabsModule,
     MatSliderModule,
     MatProgressSpinnerModule
   ],

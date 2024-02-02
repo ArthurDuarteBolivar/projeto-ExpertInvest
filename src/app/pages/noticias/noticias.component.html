@@ -1,16 +1,81 @@
+
+
 <section class="news" *ngIf="isLoaded">
     <h1>Notícias</h1>
-    <div>
-        <ng-container *ngFor="let item of news">
-            <a [href]="item.url"  target="_blank">
-              <span>{{calcularDiferencaTempo(item.time)}}</span>
-              <img [src]="item.image_src" alt="imagem">
-              <span>{{item.title}}</span>
-            </a>
-          </ng-container>
-          
-    </div>
-    <button class="load-button" (click)="loadMore()">Carregar mais <mat-icon>cached</mat-icon></button>
+    <mat-tab-group animationDuration="0ms" color="warn">
+      <mat-tab label="Página Inicia">
+        <div>
+          <ng-container *ngFor="let item of news">
+              <a [href]="item.url"  target="_blank">
+                <span>{{calcularDiferencaTempo(item.time)}}</span>
+                <img [src]="item.image_src" alt="imagem">
+                <span>{{item.title}}</span>
+              </a>
+            </ng-container>
+      </div>
+      <button class="load-button" (click)="loadMore('')">Carregar mais <mat-icon>cached</mat-icon></button>
+      </mat-tab>
+      <mat-tab label="Negócios">
+        <div>
+          <ng-container *ngFor="let item of newsBusiness">
+              <a [href]="item.url"  target="_blank">
+                <span>{{calcularDiferencaTempo(item.time)}}</span>
+                <img [src]="item.image_src" alt="imagem">
+                <span>{{item.title}}</span>
+              </a>
+            </ng-container>
+      </div>
+      <button class="load-button" (click)="loadMore('business')">Carregar mais <mat-icon>cached</mat-icon></button>
+      </mat-tab>
+      <mat-tab label="Ciência e tecnologia">
+        <div>
+          <ng-container *ngFor="let item of newsTechnology">
+              <a [href]="item.url"  target="_blank">
+                <span>{{calcularDiferencaTempo(item.time)}}</span>
+                <img [src]="item.image_src" alt="imagem">
+                <span>{{item.title}}</span>
+              </a>
+            </ng-container>
+      </div>
+      <button class="load-button" (click)="loadMore('technology')">Carregar mais <mat-icon>cached</mat-icon></button>
+      </mat-tab>
+      <mat-tab label="Entretenimento">
+        <div>
+          <ng-container *ngFor="let item of newsEntertainment">
+              <a [href]="item.url"  target="_blank">
+                <span>{{calcularDiferencaTempo(item.time)}}</span>
+                <img [src]="item.image_src" alt="imagem">
+                <span>{{item.title}}</span>
+              </a>
+            </ng-container>
+      </div>
+      <button class="load-button" (click)="loadMore('entertainment')">Carregar mais <mat-icon>cached</mat-icon></button>
+      </mat-tab>
+      <mat-tab label="Esportes">
+        <div>
+          <ng-container *ngFor="let item of newsSports">
+              <a [href]="item.url"  target="_blank">
+                <span>{{calcularDiferencaTempo(item.time)}}</span>
+                <img [src]="item.image_src" alt="imagem">
+                <span>{{item.title}}</span>
+              </a>
+            </ng-container>
+      </div>
+      <button class="load-button" (click)="loadMore('sports')">Carregar mais <mat-icon>cached</mat-icon></button>
+      </mat-tab>
+      <mat-tab label="Saúde">
+        <div>
+          <ng-container *ngFor="let item of newsHealth">
+              <a [href]="item.url"  target="_blank">
+                <span>{{calcularDiferencaTempo(item.time)}}</span>
+                <img [src]="item.image_src" alt="imagem">
+                <span>{{item.title}}</span>
+              </a>
+            </ng-container>
+      </div>
+      <button class="load-button" (click)="loadMore('health')">Carregar mais <mat-icon>cached</mat-icon></button>
+      </mat-tab>
+    </mat-tab-group>
 </section>
 
 

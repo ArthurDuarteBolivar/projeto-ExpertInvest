@@ -58,7 +58,7 @@ export class B3Service {
     return this.http.get("https://cotacao.b3.com.br/mds/api/v1/DerivativeQuotation/" + name)
   }
 
-  getNew(): Observable<News[]> {
+  getNew(topic: string, page: number): Observable<News[]> {
     const headers = new HttpHeaders({
       'X-RapidAPI-Key': this.apiKey,
       'X-RapidAPI-Host': 'news-api53.p.rapidapi.com',
@@ -66,7 +66,7 @@ export class B3Service {
 
     const options = { headers };
 
-    return this.http.get<News[]>(`${this.apiUrlNews}/business/BR?page=1&itemsPerPage=16`, options);
+    return this.http.get<News[]>(`${this.apiUrlNews}/${topic}/BR?page=${page}&itemsPerPage=16`, options);
   }
 
 
