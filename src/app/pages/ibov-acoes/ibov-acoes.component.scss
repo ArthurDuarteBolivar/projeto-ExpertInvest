@@ -113,6 +113,11 @@
     border-radius: 7px;
     padding: .5rem;
     overflow: auto; 
+    h1{
+        color: black;
+        font-weight: 300;
+        color: $cor-fundo;
+    }
 }
 .table_container{
     max-height: 300px;

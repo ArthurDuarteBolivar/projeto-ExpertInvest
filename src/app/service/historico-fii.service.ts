@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ObservedValueOf } from 'rxjs';
 import { HistoricoFii } from '../interface/historico-fii';
 import { HistoricoFiiDividendo } from '../interface/historico-fii-dividendo';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class HistoricoFiiService {
 
   constructor(private http: HttpClient) { }
 
-  api: string = "http://localhost:8090/api/v1/historico-fii"
-  apiDividendos: string = "http://localhost:8090/api/v1/historico-dividendos-fii"
+  api: string = environment.apiUrl + "historico-fii"
+  apiDividendos: string = environment.apiUrl + "historico-dividendos-fii"
 
 
   getByCodigo(codigo: string): Observable<HistoricoFii[]>{

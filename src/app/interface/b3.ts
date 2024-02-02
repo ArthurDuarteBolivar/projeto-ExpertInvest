@@ -6,6 +6,7 @@ export interface B3 {
 
 export interface BizSts {
     cd: string;
+    desc: string;
 }
 
 export interface Msg {

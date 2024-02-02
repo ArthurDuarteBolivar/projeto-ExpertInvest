@@ -2,21 +2,107 @@
 
 
 
-
-<div class="search">
-	<h1>DY</h1>
-	<div>
-		<span>{{minDividendSearch}}</span>
-		<span>{{maxDividendSearch}}</span>
+<div class="col drop">
+	<div ngbDropdown class="d-inline-block">
+		<button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+			{{dropdown}}
+		</button>
+		<div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+			<button ngbDropdownItem (click)="dropdown = 'Todos os segmentos'">Todos os segmentos</button>
+			<button ngbDropdownItem *ngFor="let item of segmentos" (click)="dropdown = item">{{item}}</button>
+		</div>
 	</div>
-	<mat-slider min="0" max="20">
-		<input matSliderStartThumb [(value)]="minDividendSearch">
-		<input matSliderEndThumb [(value)]="maxDividendSearch">
-	  </mat-slider>
 </div>
 
+<section class="contaier_search">
+	<div class="search">
+		<h1 class="uppercase">DY</h1>
+		<div>
+			<span>{{dyMin.value | customNumberFormat}}</span>
+			<span>{{dyMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="20" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minDividendSearch" #dyMin>
+			<input matSliderEndThumb [(ngModel)]="maxDividendSearch" #dyMax>
+		  </mat-slider>
+	</div>
+	<div class="search">
+		<h1 class="uppercase">p/vp</h1>	
+		<div>
+			<span>{{pvpMin.value | customNumberFormat}}</span>
+			<span>{{pvpMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="5" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPvp" #pvpMin>
+			<input matSliderEndThumb [(ngModel)]="maxPvp" #pvpMax>
+		  </mat-slider>
+	</div>
+	<div class="search">
+		<h1>Percentual do Caixa</h1>
+		<div>
+			<span>{{percentualMin.value | customNumberFormat}}</span>
+			<span>{{percentualMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPercentualdoCaixa" #percentualMin>
+			<input matSliderEndThumb [(ngModel)]="maxPercentualdoCaixa" #percentualMax>
+		  </mat-slider>
+	</div>
+	<div class="search">
+		<h1>Nº de cotistas</h1>
+		<div>
+			<span>{{cotistasMin.value | customNumberFormat}}</span>
+			<span>{{cotistasMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="100000" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minCotistas" #cotistasMin>
+			<input matSliderEndThumb [(ngModel)]="maxCotistas" #cotistasMax>
+		  </mat-slider>
+	</div>
+	<div class="search">
+		<h1>DY CAGR 3 anos</h1>
+		<div>
+			<span>{{dyCagrMin.value | customNumberFormat}}</span>
+			<span>{{dyCagrMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="50" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minDY" #dyCagrMin>
+			<input matSliderEndThumb [(ngModel)]="maxDY" #dyCagrMax>
+		  </mat-slider>
+	</div>
+	<div class="search">
+		<h1>Liquidez média diária</h1>
+		<div>
+			<span>{{liquidezMin.value | customNumberFormat}}</span>
+			<span>{{liquidezMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="5000000" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minLiquidez" #liquidezMin>
+			<input matSliderEndThumb [(ngModel)]="maxLiquidez" #liquidezMax>
+		  </mat-slider>
+	</div>
+	<div class="search">
+		<h1>Patrimônio</h1>
+		<div>
+			<span>{{patrimonioMin.value | customNumberFormat}}</span>
+			<span>{{patrimonioMax.value | customNumberFormat}}</span>
+		</div>
+		<mat-slider min="0" max="10000000000" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPatrimonio" #patrimonioMin>
+			<input matSliderEndThumb [(ngModel)]="maxPatrimonio" #patrimonioMax>
+		  </mat-slider>
+	</div>
+</section>	
+<div class="button_container">
+	<button class="button" (click)="pesquisar()">
+		<span class="button_lg">
+			<span class="button_sl"></span>
+			<span class="button_text">Pesquisar</span>
+		</span>
+	</button>
+</div>
 
-<table class="table table-striped">
+<table class="table table-striped" *ngIf="fii.length > 0">
 	<thead>
 		<tr>
 			<th scope="col">ID</th>
@@ -57,4 +143,4 @@
 		</tr>
 	</tbody>
 </table>
-<ngb-pagination [collectionSize]="240" [maxSize]="5" [(page)]="page" aria-label="Default pagination" (click)="paginator()"/>
+<!-- <ngb-pagination [collectionSize]="240" [maxSize]="5" [(page)]="page" aria-label="Default pagination" (click)="paginator()"/> -->

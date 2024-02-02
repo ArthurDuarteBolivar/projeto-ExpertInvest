@@ -4,7 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'customNumberFormat'
 })
 export class CustomNumberFormatPipe implements PipeTransform {
-  transform(value: number): string {
+  transform(value: number | string): string {
+
+    if(typeof(value) == 'string'){
+      value = parseFloat(value)
+    }
     // Verifica se o valor é nulo ou indefinido
     if (value == null) {
       return '';

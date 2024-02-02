@@ -1,0 +1,464 @@
+<app-header-page title="AÇÕES" description="BOVESPA E BM&F"></app-header-page>
+
+
+
+<div class="col drop">
+	<div ngbDropdown class="d-inline-block">
+		<span>Setores</span>
+		<button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+			{{dropdown}}
+		</button>
+		<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+			<button ngbDropdownItem (click)="dropdown = 'Todos os segmentos'">Todos os setores</button>
+			<button ngbDropdownItem *ngFor="let item of setor" (click)="dropdown = item"
+				(click)="mudarSubsetor()">{{item}}</button>
+		</div>
+	</div>
+	<div ngbDropdown class="d-inline-block">
+		<span>Subsetores</span>
+		<button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+			{{dropdownSubsetor}}
+		</button>
+		<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+			<button ngbDropdownItem (click)="dropdown = 'Todos os segmentos'">Selecione um setor</button>
+			<button ngbDropdownItem *ngFor="let item of subsetor" (click)="dropdownSubsetor = item"
+				(click)="mudarSegmento()">{{item}}</button>
+		</div>
+	</div>
+	<div ngbDropdown class="d-inline-block">
+		<span>Segmentos</span>
+		<button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+			{{dropdownSegmentos}}
+		</button>
+		<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+			<button ngbDropdownItem (click)="dropdown = 'Todos os segmentos'">Selecione um subsetor</button>
+			<button ngbDropdownItem *ngFor="let item of segmentos" (click)="dropdownSegmentos = item">{{item}}</button>
+		</div>
+	</div>
+</div>
+
+<section class="contaier_search">
+	<div class="search">
+		<h1 class="uppercase">DY</h1>
+		<div>
+			<input [(ngModel)]="minDividendSearch" type="number">
+			-
+			<input [(ngModel)]="maxDividendSearch" type="number">
+		</div>
+		<mat-slider min="0" max="25" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minDividendSearch">
+			<input matSliderEndThumb [(ngModel)]="maxDividendSearch">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1 class="uppercase">p/l</h1>
+		<div>
+			<input [(ngModel)]="minPL" type="number">
+			-
+			<input [(ngModel)]="maxPL" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPL">
+			<input matSliderEndThumb [(ngModel)]="maxPL">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>PEG Ratio</h1>
+		<div>
+			<input [(ngModel)]="minPegRatio" type="number">
+			-
+			<input [(ngModel)]="maxPegRatio" type="number">
+		</div>
+		<mat-slider min="-10" max="10" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPegRatio">
+			<input matSliderEndThumb [(ngModel)]="maxPegRatio">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>P/VP</h1>
+		<div>
+			<input [(ngModel)]="minPvp" type="number">
+			-
+			<input [(ngModel)]="maxPvp" type="number">
+		</div>
+		<mat-slider min="0" max="20" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPvp">
+			<input matSliderEndThumb [(ngModel)]="maxPvp">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>P/Ativos</h1>
+		<div>
+			<input [(ngModel)]="minPAtivos" type="number">
+			-
+			<input [(ngModel)]="maxPativos" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPAtivos">
+			<input matSliderEndThumb [(ngModel)]="maxPativos">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Margem Bruta</h1>
+		<div>
+			<input [(ngModel)]="minMargemBruta" type="number">
+			-
+			<input [(ngModel)]="maxMargemBruta" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minMargemBruta">
+			<input matSliderEndThumb [(ngModel)]="maxMargemBruta">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Margem Ebit</h1>
+		<div>
+			<input [(ngModel)]="minMargemEbit" type="number">
+			-
+			<input [(ngModel)]="maxnMargemEbit" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minMargemEbit">
+			<input matSliderEndThumb [(ngModel)]="maxnMargemEbit">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Marg. Líquida</h1>
+		<div>
+			<input [(ngModel)]="minMargLiquida" type="number">
+			-
+			<input [(ngModel)]="maxMargLiquida" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minMargLiquida">
+			<input matSliderEndThumb [(ngModel)]="maxMargLiquida">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>P/EBIT</h1>
+		<div>
+			<input [(ngModel)]="minPEbit" type="number">
+			-
+			<input [(ngModel)]="maxPEbit" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPEbit">
+			<input matSliderEndThumb [(ngModel)]="maxPEbit">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>EV/EBIT</h1>
+		<div>
+			<input [(ngModel)]="minEvEbit" type="number">
+			-
+			<input [(ngModel)]="maxEvEbit" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minEvEbit">
+			<input matSliderEndThumb [(ngModel)]="maxEvEbit">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Dívida Líquida / EBIT</h1>
+		<div>
+			<input [(ngModel)]="minDividaLiquidaEbit" type="number">
+			-
+			<input [(ngModel)]="maxDividaLiquidaEbit" type="number">
+		</div>
+		<mat-slider min="0" max="20" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minDividaLiquidaEbit">
+			<input matSliderEndThumb [(ngModel)]="maxDividaLiquidaEbit">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Dívida Líquida / Patrimônio</h1>
+		<div>
+			<input [(ngModel)]="minDividaLiquidaPatrimonio" type="number">
+			-
+			<input [(ngModel)]="maxDividaLiquidaPatrimonio" type="number">
+		</div>
+		<mat-slider min="0" max="20" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minDividaLiquidaPatrimonio">
+			<input matSliderEndThumb [(ngModel)]="maxDividaLiquidaPatrimonio">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>PSR</h1>
+		<div>
+			<input [(ngModel)]="minPsr" type="number">
+			-
+			<input [(ngModel)]="maxPsr" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPsr">
+			<input matSliderEndThumb [(ngModel)]="maxPsr">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>P/Cap. Giro</h1>
+		<div>
+			<input [(ngModel)]="minPcapGiro" type="number">
+			-
+			<input [(ngModel)]="maxPcapGiro" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPcapGiro">
+			<input matSliderEndThumb [(ngModel)]="maxPcapGiro">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Preço sobre Ativo Circ. Líq.</h1>
+		<div>
+			<input [(ngModel)]="minPrecoAtivoCirc" type="number">
+			-
+			<input [(ngModel)]="maxPrecoAtivoCirc" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPrecoAtivoCirc">
+			<input matSliderEndThumb [(ngModel)]="maxPrecoAtivoCirc">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>ROE</h1>
+		<div>
+			<input [(ngModel)]="minRoe" type="number">
+			-
+			<input [(ngModel)]="maxRoe" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minRoe">
+			<input matSliderEndThumb [(ngModel)]="maxRoe">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>ROIC</h1>
+		<div>
+			<input [(ngModel)]="minRoic" type="number">
+			-
+			<input [(ngModel)]="maxRoic" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minRoic">
+			<input matSliderEndThumb [(ngModel)]="maxRoic">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>ROA</h1>
+		<div>
+			<input [(ngModel)]="minRoa" type="number">
+			-
+			<input [(ngModel)]="maxRoa" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minRoa">
+			<input matSliderEndThumb [(ngModel)]="maxRoa">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Liquidez Corrente</h1>
+		<div>
+			<input [(ngModel)]="minLiquidezCorrente" type="number">
+			-
+			<input [(ngModel)]="maxLiquidezCorrente" type="number">
+		</div>
+		<mat-slider min="0" max="20" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minLiquidezCorrente">
+			<input matSliderEndThumb [(ngModel)]="maxLiquidezCorrente">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Patrimônio / Ativos</h1>
+		<div>
+			<input [(ngModel)]="minPatrimonioAtivos" type="number">
+			-
+			<input [(ngModel)]="maxPatrimonioAtivos" type="number">
+		</div>
+		<mat-slider min="0" max="1" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPatrimonioAtivos">
+			<input matSliderEndThumb [(ngModel)]="maxPatrimonioAtivos">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Passivos / Ativos</h1>
+		<div>
+			<input [(ngModel)]="minPassivosAtivos" type="number">
+			-
+			<input [(ngModel)]="maxPassivosAtivos" type="number">
+		</div>
+		<mat-slider min="0" max="1" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minPassivosAtivos">
+			<input matSliderEndThumb [(ngModel)]="maxPassivosAtivos">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Giro Ativos</h1>
+		<div>
+			<input [(ngModel)]="minGiroAtivos" type="number">
+			-
+			<input [(ngModel)]="maxGiroAtivos" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minGiroAtivos">
+			<input matSliderEndThumb [(ngModel)]="maxGiroAtivos">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>CAGR Receitas 5 Anos</h1>
+		<div>
+			<input [(ngModel)]="minCagrReceitas" type="number">
+			-
+			<input [(ngModel)]="maxCagrReceitas" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minCagrReceitas">
+			<input matSliderEndThumb [(ngModel)]="maxCagrReceitas">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>CAGR Lucros 5 Anos</h1>
+		<div>
+			<input [(ngModel)]="minCagrLucro" type="number">
+			-
+			<input [(ngModel)]="maxCagrLucro" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minCagrLucro">
+			<input matSliderEndThumb [(ngModel)]="maxCagrLucro">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Liquidez média diária</h1>
+		<div>
+			<input [(ngModel)]="minLiquidezMediaDiaria" type="number">
+			-
+			<input [(ngModel)]="maxLiquidezMediaDiaria" type="number">
+		</div>
+		<mat-slider min="0" max="10000000" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minLiquidezMediaDiaria">
+			<input matSliderEndThumb [(ngModel)]="maxLiquidezMediaDiaria">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>VPA</h1>
+		<div>
+			<input [(ngModel)]="minVpa" type="number">
+			-
+			<input [(ngModel)]="maxVpa" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minVpa">
+			<input matSliderEndThumb [(ngModel)]="maxVpa">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>LPA</h1>
+		<div>
+			<input [(ngModel)]="minLpa" type="number">
+			-
+			<input [(ngModel)]="maxLpa" type="number">
+		</div>
+		<mat-slider min="0" max="100" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minLpa">
+			<input matSliderEndThumb [(ngModel)]="maxLpa">
+		</mat-slider>
+	</div>
+	<div class="search">
+		<h1>Valor de mercado</h1>
+		<div>
+			<input [(ngModel)]="minValorMercado" type="number">
+			-
+			<input [(ngModel)]="maxValorMercado" type="number">
+		</div>
+		<mat-slider min="0" max="100000000000" step="0.5">
+			<input matSliderStartThumb [(ngModel)]="minValorMercado">
+			<input matSliderEndThumb [(ngModel)]="maxValorMercado">
+		</mat-slider>
+	</div>
+</section>
+<div class="button_container">
+	<button class="button" (click)="pesquisar()">
+		<span class="button_lg">
+			<span class="button_sl"></span>
+			<span class="button_text">Pesquisar</span>
+		</span>
+	</button>
+</div>
+<div class="table-container">
+
+	<table class="table table-striped" *ngIf="acoes.length > 0">
+		<thead>
+			<tr>
+				<th scope="col">TICKER</th>
+				<th scope="col">PREÇO</th>
+				<th scope="col">DY</th>
+				<th scope="col">P/L</th>
+				<th scope="col">PEG RATIO</th>
+				<th scope="col">P/VP</th>
+				<th scope="col">P/ATIVOS</th>
+				<th scope="col">MARGEM BRUTA</th>
+				<th scope="col">MARGEM EBIT</th>
+				<th scope="col">MARG. LÍQUIDA</th>
+				<th scope="col">P/EBIT</th>
+				<th scope="col">EV/EBIT</th>
+				<th scope="col">DÍVIDA LÍQUIDA / EBIT</th>
+				<th scope="col">DÍVIDA LÍQUIDA / PATRIMÔNIO</th>
+				<th scope="col">PSR</th>
+				<th scope="col">P/CAP. GIRO</th>
+				<th scope="col">PREÇO SOBRE ATIVO CIRC. LÍQ.</th>
+				<th scope="col">ROE</th>
+				<th scope="col">ROIC</th>
+				<th scope="col">ROA</th>
+				<th scope="col">LIQUIDEZ CORRENTE</th>
+				<th scope="col">PATRIMÔNIO / ATIVOS</th>
+				<th scope="col">PASSIVOS / ATIVOS</th>
+				<th scope="col">GIRO ATIVOS</th>
+				<th scope="col">CAGR RECEITAS 5 ANOS</th>
+				<th scope="col">CAGR LUCROS 5 ANOS</th>
+				<th scope="col">LIQUIDEZ MÉDIA DIÁRIA</th>
+				<th scope="col">VPA</th>
+				<th scope="col">LPA</th>
+				<th scope="col">VALOR DE MERCADO</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of acoes; let i = index">
+				<td [ngClass]="(item.priceFluctuation >= 0) ? 'subir' : 'descer'" [routerLink]="['/fii',item.name] ">
+					<mat-icon *ngIf="item.priceFluctuation > 0">trending_up</mat-icon>
+					<mat-icon *ngIf="item.priceFluctuation == 0">trending_flat</mat-icon>
+					<mat-icon *ngIf="item.priceFluctuation < 0">trending_down</mat-icon>
+					{{item.name}}
+				</td>
+				<td>{{item.price | customNumber}}</td>
+				<td>{{item.dividendYield|customNumber}}</td>
+				<td>{{item.priceProfit |customNumber}}</td>
+				<td>{{item.pegRatio| customNumber}}</td>
+				<td>{{item.priceActive | customNumberFormat}}</td>
+				<td>{{item.grossMargin | customNumber}}</td>
+				<td>{{item.marginEbit | customNumber}}</td>
+				<td>{{item.netMargin | customNumber}}</td>
+				<td>{{item.priceEbit | customNumber}}</td>
+				<td>{{item.enterpriseValueEbit | customNumber}}</td>
+				<td>{{item.divideEbit | customNumber}}</td>
+				<td>{{item.divideAssets | customNumber}}</td>
+				<td>{{item.profitShares | customNumber}}</td>
+				<td>{{item.priceNetRevenue | customNumber}}</td>
+				<td>{{item.workingCapitalPrice | customNumber}}</td>
+				<td>{{item.currentAssetsPrice | customNumber}}</td>
+				<td>{{item.roe | customNumber}}</td>
+				<td>{{item.roic | customNumber}}</td>
+				<td>{{item.roa | customNumber}}</td>
+				<td>{{item.roa | customNumber}}</td>
+				<td>{{item.currentLiquidity | customNumber}}</td>
+				<td>{{item.assetsActive | customNumber}}</td>
+				<td>{{item.assetsActive | customNumber}}</td>
+				<td>{{item.cagrRevenues | customNumber}}</td>
+				<td>{{item.cagrProfit | customNumber}}</td>
+				<td>{{item.dailyLiquidityAverage | customNumber}}</td>
+				<td>{{item.assetValue | customNumber}}</td>
+				<td>{{item.profitShares | customNumber}}</td>
+				<td>{{item.profitShares | customNumber}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<!-- <ngb-pagination [collectionSize]="240" [maxSize]="5" [(page)]="page" aria-label="Default pagination" (click)="paginator()"/> -->

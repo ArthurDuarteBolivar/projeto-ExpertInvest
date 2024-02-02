@@ -9,11 +9,13 @@ import { B3Service } from 'src/app/service/b3.service';
 import { HistoricoAcoesService } from 'src/app/service/historico-acoes.service';
 import { DeepPartial, TimeChartOptions, createChart } from 'lightweight-charts';
 import Chart from 'chart.js/auto';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+
 
 @Component({
   selector: 'app-ibov-acoes',
   templateUrl: './ibov-acoes.component.html',
-  styleUrls: ['./ibov-acoes.component.scss']
+  styleUrls: ['./ibov-acoes.component.scss'],
 })
 export class IbovAcoesComponent implements OnInit {
   
@@ -86,24 +88,23 @@ export class IbovAcoesComponent implements OnInit {
       this.name = params.get('name')!;
       this.acoesService.getAcoes(this.name).subscribe(res => {
         this.acao = res;
+        this.b3Service.getCodigo(this.name).subscribe(res => {
+          this.acoesB3 = res
+            this.info = {
+              curPrc: this.acoesB3.Trad[0].scty.SctyQtn.curPrc,
+              prcFlcn: this.acoesB3.Trad[0].scty.SctyQtn.prcFlcn,
+              min52: this.acao.minWeek,
+              minMonth: this.acao.minMonth,
+              max52: this.acao.maxWeek,
+              maxMonth: this.acao.maxMonth,
+              dividendPercent: this.acao.dividendYield,
+              dividendLast12: this.acao.dividendYieldMonth,
+              valorization12: this.acao.valorizationAll,
+              valorizationMonth: this.acao.valorizationMonth
+            }
+          })
       })
-      this.b3Service.getCodigo(this.name).subscribe(res => {
-        this.acoesB3 = res
-        if (this.acoesB3.Trad[0].scty.SctyQtn.curPrc) {
-          this.info = {
-            curPrc: this.acoesB3.Trad[0].scty.SctyQtn.curPrc,
-            prcFlcn: this.acoesB3.Trad[0].scty.SctyQtn.prcFlcn,
-            min52: this.acao.minWeek,
-            minMonth: this.acao.minMonth,
-            max52: this.acao.maxWeek,
-            maxMonth: this.acao.maxMonth,
-            dividendPercent: this.acao.dividendYield,
-            dividendLast12: this.acao.dividendYieldMonth,
-            valorization12: this.acao.valorizationAll,
-            valorizationMonth: this.acao.valorizationMonth
-          }
-        }
-      })
+
       this.b3Service.getHistoricoCodigo(this.name).subscribe(res => {
         this.historico = res;
         this.historico.TradgFlr.scty.lstQtn.forEach(res => {
@@ -132,23 +133,25 @@ export class IbovAcoesComponent implements OnInit {
         });
         this.chartName = this.chartName.reverse()
         this.chartValue = this.chartValue.reverse()
-        this.chartProduction = new Chart(this.graphProduction.nativeElement, {
-          type: 'bar', // Tipo de gráfico de barra
-          data: {
-            labels: this.chartName,
-            datasets: [
-              {
-                maxBarThickness: 50,
-                minBarLength: 1,
-                label: '2023',
-                data: this.chartValue, // Dados para a primeira barra
-                backgroundColor: 'rgba(1, 77, 154)',
-                borderColor: 'rgb(1, 77, 154)',
-                borderWidth: 1,
-              },
-            ],
-          },
-        });
+        setTimeout(() => {
+          this.chartProduction = new Chart(this.graphProduction.nativeElement, {
+            type: 'bar', // Tipo de gráfico de barra
+            data: {
+              labels: this.chartName,
+              datasets: [
+                {
+                  maxBarThickness: 50,
+                  minBarLength: 1,
+                  label: '2023',
+                  data: this.chartValue, // Dados para a primeira barra
+                  backgroundColor: 'rgba(1, 77, 154)',
+                  borderColor: 'rgb(1, 77, 154)',
+                  borderWidth: 1,
+                },
+              ],
+            },
+          });
+        }, 1000);
         
       });
 

@@ -105,8 +105,13 @@
     border-right: solid 3px #fff;
     border-radius: 7px;
     padding: .5rem;
-    max-height: min-content;
-    // overflow: auto;
+    padding-bottom: 105px;
+    max-width: 100%;
+    h1{
+        color: black;
+        font-weight: 300;
+        color: $cor-fundo;
+    }
 }
 
 

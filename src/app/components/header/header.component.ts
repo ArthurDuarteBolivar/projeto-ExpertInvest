@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
 	private offcanvasService = inject(NgbOffcanvas);
 
 	opens(content: TemplateRef<any>) {
-		console.log(this.offcanvasService.hasOpenOffcanvas())
 		if (this.offcanvasService.hasOpenOffcanvas() == false) {
 			this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvas-basic-title' }).result.then(
 				(result) => {

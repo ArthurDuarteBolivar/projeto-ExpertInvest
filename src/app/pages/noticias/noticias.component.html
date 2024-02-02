@@ -1,0 +1,24 @@
+<section class="news" *ngIf="isLoaded">
+    <h1>Notícias</h1>
+    <div>
+        <ng-container *ngFor="let item of news">
+            <a [href]="item.url"  target="_blank">
+              <span>{{calcularDiferencaTempo(item.time)}}</span>
+              <img [src]="item.image_src" alt="imagem">
+              <span>{{item.title}}</span>
+            </a>
+          </ng-container>
+          
+    </div>
+    <button class="load-button" (click)="loadMore()">Carregar mais <mat-icon>cached</mat-icon></button>
+</section>
+
+
+
+<div class="loadingspinner" *ngIf="!isLoaded">
+    <div id="square1"></div>
+    <div id="square2"></div>
+    <div id="square3"></div>
+    <div id="square4"></div>
+    <div id="square5"></div>
+  </div>

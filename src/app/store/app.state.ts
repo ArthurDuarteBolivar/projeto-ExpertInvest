@@ -17,36 +17,34 @@ export interface IAppState {
 
 export const appInitialState: IAppState = {
     highIbov: {
-        BizSts: { cd: "" },
+        BizSts: { cd: "", desc: "" },
         Msg: { dtTm: "" },
         SctyHghstIncrLst: [],
         SctyHghstDrpLst: []
     },
     flutuationIfix: {
-        BizSts: { cd: "" },
+        BizSts: { cd: "", desc: "" },
         Msg: { dtTm: "" },
         SctyHghstIncrLst: [],
         SctyHghstDrpLst: []
     },
     ifix: {
-        BizSts: { cd: "" },
+        BizSts: { cd: "", desc: "" },
         Msg: { dtTm: "" },
         Trad: []
     },
     ibov: {
-        BizSts: { cd: "" },
+        BizSts: { cd: "", desc: "" },
         Msg: { dtTm: "" },
         Trad: []
     },
     indices: {
-        BizSts: { cd: "" },
+        BizSts: { cd: "", desc: "" },
         Msg: { dtTm: "" },
         Trad: []
     },
     b3TradingFloor: {
-        BizSts: {
-            cd: ""
-        },
+        BizSts: { cd: ""},
         Msg: {
             dtTm: ""
         },
@@ -59,9 +57,7 @@ export const appInitialState: IAppState = {
         },
     },
     b3TradeVolume: {
-        BizSts: {
-            cd: ""
-        },
+        BizSts: { cd: ""},
         Msg: {
             dtTm: ""
         },

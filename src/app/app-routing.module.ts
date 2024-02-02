@@ -11,6 +11,8 @@ import { AcoesComponent } from './components/acoes/acoes.component';
 import { CalculadorasComponent } from './pages/calculadoras/calculadoras.component';
 import { IbovAcoesComponent } from './pages/ibov-acoes/ibov-acoes.component';
 import { IndicesComponent } from './pages/indices/indices.component';
+import { InvestimentoAcoesComponent } from './pages/investimento-acoes/investimento-acoes.component';
+import { NoticiasComponent } from './pages/noticias/noticias.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -23,7 +25,9 @@ const routes: Routes = [
   {path: "fii", component: InvestimentoComponent},
   {path: "fii/:name", component: AcoesComponent},
   {path: "acoes/:name", component: IbovAcoesComponent},
+  {path: "acoes", component: InvestimentoAcoesComponent},
   {path: "indices/:name", component: IndicesComponent},
+  {path: "noticias", component: NoticiasComponent},
   {path: "**", redirectTo: ""}
 ];
 

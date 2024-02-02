@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { B3 } from 'src/app/interface/b3';
 import { TopInfo } from 'src/app/interface/top-info';
 
 @Component({
@@ -9,6 +10,6 @@ import { TopInfo } from 'src/app/interface/top-info';
 export class TopInfoIndiceComponent {
 
   @Input()
-  info!: TopInfo;
+  info!: B3;
 
 }

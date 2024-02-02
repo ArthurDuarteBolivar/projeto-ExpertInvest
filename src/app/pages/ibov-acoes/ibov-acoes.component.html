@@ -1,21 +1,26 @@
-<app-header-page title="{{acoesB3.Trad[0].scty.symb}}" description="{{acao.description}}"
-    icon="false"></app-header-page>
+<ng-container *ngIf="acoesB3 && acoesB3.Trad && acoesB3.Trad[0]">
+    <app-header-page title="{{acoesB3.Trad[0].scty.symb}}" description="{{acao.description}}"
+        icon="false"></app-header-page>
+</ng-container>
 <section class="container">
+    <ng-container *ngIf="acoesB3 && acoesB3.Trad && acoesB3.Trad[0]">
 
-    <app-top-info [info]="info"></app-top-info>
+        <app-top-info [info]="info"></app-top-info>
+        <div class="wrapper">
+            <h1 class="uppercase">cotação do {{acoesB3.Trad[0].scty.symb}}</h1>
+            <ngx-charts-line-chart [legend]="legend" [showXAxisLabel]="showXAxisLabel" [scheme]="colorScheme"
+                [showYAxisLabel]="showYAxisLabel" [xAxis]="true" [yAxis]="true" [autoScale]="true"
+                [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)"
+                (activate)="onActivate($event)" (deactivate)="onDeactivate($event)" style="fill: #d1d1d1;"
+                [timeline]="true" [showGridLines]="true">
+            </ngx-charts-line-chart>
+        </div>
+        <app-indicators [indicadores]="acao"></app-indicators>
+        <app-card-info [info]="acao"></app-card-info>
+        <app-segmento [setor]="acao.setor" [segmento]="acao.segmento" [subsetor]="acao.subsetor"></app-segmento>
+    </ng-container>
     <div class="wrapper">
-        <h1 class="uppercase">cotação {{acoesB3.Trad[0].scty.symb}}</h1>
-        <ngx-charts-line-chart [legend]="legend" [showXAxisLabel]="showXAxisLabel" [scheme]="colorScheme"
-            [showYAxisLabel]="showYAxisLabel" [xAxis]="true" [yAxis]="true" [autoScale]="true" [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel" [results]="multi" (select)="onSelect($event)" (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)" style="fill: #d1d1d1;" [timeline]="true" [showGridLines]="true">
-        </ngx-charts-line-chart>
-    </div>
-    <app-indicators [indicadores]="acao"></app-indicators>
-    <app-card-info [info]="acao"></app-card-info>
-    <app-segmento [setor]="acao.setor" [segmento]="acao.segmento" [subsetor]="acao.subsetor"></app-segmento>
-    <div class="wrapper">
-        <h1 class="uppercase">dividendos {{acoesB3.Trad[0].scty.symb}}</h1>
+        <h1 class="uppercase" *ngIf="acoesB3 && acoesB3.Trad && acoesB3.Trad[0]">dividendos do {{acoesB3.Trad[0].scty.symb}}</h1>
         <!-- <ngx-charts-bar-vertical-2d [scheme]="colorScheme" [results]="multiDividendos" [xAxis]="true" [yAxis]="true"  [showGridLines]="true"
             [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
             [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)" [roundDomains]="true">

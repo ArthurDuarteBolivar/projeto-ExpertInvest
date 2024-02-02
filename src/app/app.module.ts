@@ -47,7 +47,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.state';
 import { EffectsModule } from '@ngrx/effects';
 import {MatSliderModule} from '@angular/material/slider';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { InvestimentoAcoesComponent } from './pages/investimento-acoes/investimento-acoes.component';
+import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireAuthModule} from '@angular/fire/compat/auth'
+import { NoticiasComponent } from './pages/noticias/noticias.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +83,8 @@ import {MatSliderModule} from '@angular/material/slider';
     CardInfoComponent,
     TopInfoIndiceComponent,
     SegmentoComponent,
+    InvestimentoAcoesComponent,
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +105,18 @@ import {MatSliderModule} from '@angular/material/slider';
     StoreModule.forRoot({app: appReducer}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
-    MatSliderModule
+    // AngularFireModule.initializeApp({
+    //   apiKey: "AIzaSyB8WB8eDpjcoXciBcRHawCKje9Ie7cwZJ8",
+    //   authDomain: "expert-invest-8144b.firebaseapp.com",
+    //   projectId: "expert-invest-8144b",
+    //   storageBucket: "expert-invest-8144b.appspot.com",
+    //   messagingSenderId: "603495226599",
+    //   appId: "1:603495226599:web:9d03b446a5a7fa8c75d642",
+    //   measurementId: "G-BZ2GG71QZ2"
+    // }),
+    // AngularFireAuthModule,
+    MatSliderModule,
+    MatProgressSpinnerModule
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]

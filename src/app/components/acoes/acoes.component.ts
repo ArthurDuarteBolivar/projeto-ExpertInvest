@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Fii } from 'src/app/interface/fii';
 import { HistoricoFii } from 'src/app/interface/historico-fii';
@@ -18,7 +18,7 @@ import { TopInfo } from 'src/app/interface/top-info';
   templateUrl: './acoes.component.html',
   styleUrls: ['./acoes.component.scss']
 })
-export class AcoesComponent implements OnInit, AfterViewInit {
+export class AcoesComponent implements OnInit, AfterViewInit, OnDestroy  {
 
 
   historicoDividendos: HistoricoFiiDividendo[] = []
@@ -32,8 +32,57 @@ export class AcoesComponent implements OnInit, AfterViewInit {
 
   chartHistorico: Chart<'line', any, any> | undefined;
   name: string = "";
-  fii!: Fii;
-  info!: TopInfo;
+  fii: Fii = {
+    id: 0,
+    name: '',
+    price: 0,
+    dividendNext: 0,
+    dataBaseNext: 0,
+    dataPagamentoNext: 0,
+    dividendLast: 0,
+    dataBaseLast: 0,
+    dataPagamentoLast: 0,
+    dividendPercent: 0,
+    precoSobreVP: 0,
+    dividendValor: 0,
+    variacao: 0,
+    min52semanas: 0,
+    minMes: 0,
+    max52semanas: 0,
+    maxMes: 0,
+    valorizacao12M: 0,
+    valorizacaoMes: 0,
+    valorPatrimonialPorCota: 0,
+    patrimonio: 0,
+    valorEmCaixa: 0,
+    totalEmCaixa: 0,
+    dyCagr3Anos: 0,
+    dyCagr5Anos: 0,
+    dividendoUltimo12meses: 0,
+    rendimentoMedio24M: 0,
+    taxaAdministracao: 0,
+    liquidezMediaDiaria: 0,
+    participacaoNoInfix: 0,
+    totalNegociacoes: 0,
+    volumeNegociacoes: 0,
+    valorDeMercado: 0,
+    nomeCompleto: '',
+    ndeCotas: 0,
+    ndeCotistas: 0,
+    segmento: ''
+  };
+  info: TopInfo = {
+    curPrc: 0,
+    prcFlcn: 0,
+    min52: 0,
+    minMonth: 0,
+    max52: 0,
+    maxMonth: 0,
+    dividendPercent: 0,
+    dividendLast12: 0,
+    valorization12: 0,
+    valorizationMonth: 0
+  }
   historico!: DailyFlucutiation;
   data: any[] = [];
   preco: Number[] = [];
@@ -41,7 +90,7 @@ export class AcoesComponent implements OnInit, AfterViewInit {
 
   @ViewChild('historico', { static: true })
   graphHistorico!: ElementRef;
-
+  private intervalId: any;
   legend: boolean = false;
   animations: boolean = true;
   xAxis: boolean = true;
@@ -91,24 +140,26 @@ export class AcoesComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.name = params.get('name')!;
-      this.b3Service.getCodigo(this.name).subscribe(res => {
-        this.fiisB3 = res;
-        this.fiiService.getByName(this.name).subscribe(res => {
-          this.fii = res;
-          this.info = {
-            curPrc: this.fiisB3.Trad[0].scty.SctyQtn.curPrc,
-            prcFlcn: this.fiisB3.Trad[0].scty.SctyQtn.prcFlcn,
-            min52: this.fii.min52semanas,
-            minMonth: this.fii.minMes,
-            max52: this.fii.max52semanas,
-            maxMonth: this.fii.maxMes,
-            dividendPercent: this.fii.dividendPercent,
-            dividendLast12: this.fii.dividendLast,
-            valorization12: this.fii.valorizacao12M,
-            valorizationMonth: this.fii.valorizacaoMes
-          }
-        });
-      })
+      if(this.name != ""){
+        this.b3Service.getCodigo(this.name).subscribe(res => {
+          this.fiisB3 = res;
+          this.fiiService.getByName(this.name).subscribe(res => {
+            this.fii = res;
+            this.info = {
+              curPrc: this.fiisB3.Trad[0].scty.SctyQtn.curPrc,
+              prcFlcn: this.fiisB3.Trad[0].scty.SctyQtn.prcFlcn,
+              min52: this.fii.min52semanas,
+              minMonth: this.fii.minMes,
+              max52: this.fii.max52semanas,
+              maxMonth: this.fii.maxMes,
+              dividendPercent: this.fii.dividendPercent,
+              dividendLast12: this.fii.dividendLast,
+              valorization12: this.fii.valorizacao12M,
+              valorizationMonth: this.fii.valorizacaoMes
+            }
+          });
+        })
+      }
       this.b3Service.getHistoricoCodigo(this.name.toUpperCase()).subscribe(res => {
         this.historico = res;
         this.historico.TradgFlr.scty.lstQtn.forEach(res => {
@@ -138,7 +189,7 @@ export class AcoesComponent implements OnInit, AfterViewInit {
       });
     });
 
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.b3Service.getCodigo(this.name).subscribe(res => {
         this.fiisB3 = res;
       })
@@ -174,6 +225,12 @@ export class AcoesComponent implements OnInit, AfterViewInit {
       //   });
       // }
     }, 5000)
+  }
+
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   changeGraph() {

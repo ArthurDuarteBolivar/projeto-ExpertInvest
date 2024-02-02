@@ -1,14 +1,15 @@
 <nav [ngClass]="{'small': isNavbarSmall}">
 	<div class="container">
 		<a class="nav-link" [routerLink]="['/']">
-			<img src="/assets/images/logo.png" alt="logo">
+			<img [ngClass]="{'small-img': isNavbarSmall}" src="/assets/images/logo.png" alt="logo">
 		</a>
 		<div class="links" *ngIf="tela > 1000">
 			<ul>
 				<li><a (click)="open(content)"><mat-icon>search</mat-icon></a></li>
 				<li><a [routerLink]="['/calculadoras']">Calculadoras</a></li>
 				<li><a [routerLink]="['/fii']">Fii</a></li>
-				<li><a [routerLink]="['']">Ações</a></li>
+				<li><a [routerLink]="['acoes']">Ações</a></li>
+				<li><a [routerLink]="['noticias']">Notícias</a></li>
 			</ul>
 		</div>
 		<mat-icon (click)="opens(contents)" *ngIf="tela <= 1000">menu</mat-icon>
@@ -20,13 +21,14 @@
 	<div class="offcanvas-header">
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
 	</div>
-	<div class="offcanvas-body">
+	<div class="offcanvas-body">	
 		<div class="links">
 			<ul>
 				<li><a (click)="open(content)" (click)="offcanvas.dismiss('Cross click')"><mat-icon>search</mat-icon></a></li>
 				<li><a [routerLink]="['/calculadoras']" (click)="offcanvas.dismiss('Cross click')">Calculadoras</a></li>
 				<li><a [routerLink]="['/fii']" (click)="offcanvas.dismiss('Cross click')">Fii</a></li>
-				<li><a [routerLink]="['']" (click)="offcanvas.dismiss('Cross click')">Ações</a></li>
+				<li><a [routerLink]="['/acoes']" (click)="offcanvas.dismiss('Cross click')">Ações</a></li>
+				<li><a [routerLink]="['/noticias']" (click)="offcanvas.dismiss('Cross click')">Notícias</a></li>
 			</ul>
 		</div>
 	</div>

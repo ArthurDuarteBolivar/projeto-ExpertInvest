@@ -1,26 +1,26 @@
 <div class="top-info">
     <div class="info especial">
         <span class="title">VALOR ATUAL</span>
-        <span><span class="icon">R$ </span>{{info.curPrc| customNumberFormat}}</span>
+        <span><span class="icon"></span>{{info.Trad[0].scty.SctyQtn.curPrc | customNumberFormat}}</span>
     </div>
     <div class="info">
-        <span class="title">MIN. 52 SEMANAS</span>
-        <span><span class="icon">R$ </span>{{info.min52| customNumberFormat}}</span>
-        <span class="sub-title">MIN. MÊS</span>
-        <span class="description"><span class="icon">R$ </span>{{info.minMonth| customNumberFormat}}</span>
+        <span class="title">MIN</span>
+        <span><span class="icon"></span>{{info.Trad[0].scty.SctyQtn.minPric| customNumberFormat}}</span>
     </div>
     <div class="info">
-        <span class="title">MÁX. 52 SEMANAS</span>
-        <span><span class="icon">R$ </span>{{info.max52 | customNumberFormat}}</span>
-        <span class="sub-title">MÁX. MÊS</span>
-        <span class="description"><span class="icon">R$ </span>{{info.maxMonth| customNumberFormat}}</span>
+        <span class="title">MÁX</span>
+        <span><span class="icon"></span>{{info.Trad[0].scty.SctyQtn.maxPric | customNumberFormat}}</span>
+    </div>
+    <div class="info">
+        <span class="title">MÈDIA</span>
+        <span><span class="icon"></span>{{info.Trad[0].scty.SctyQtn.avrgPric | customNumberFormat}}</span>
     </div>
     <div class="info">
         <span class="title">VARIAÇãO</span>
             <span>
-                <mat-icon class="icon" *ngIf="info.prcFlcn > 0">trending_up</mat-icon>
-                <mat-icon class="icon" *ngIf="info.prcFlcn == 0">trending_flat</mat-icon>
-                <mat-icon class="icon" *ngIf="info.prcFlcn < 0">trending_down</mat-icon>
-                {{info.prcFlcn | customNumberFormat}}%</span>
+                <mat-icon class="icon" *ngIf="info.Trad[0].scty.SctyQtn.prcFlcn > 0">trending_up</mat-icon>
+                <mat-icon class="icon" *ngIf="info.Trad[0].scty.SctyQtn.prcFlcn == 0">trending_flat</mat-icon>
+                <mat-icon class="icon" *ngIf="info.Trad[0].scty.SctyQtn.prcFlcn < 0">trending_down</mat-icon>
+                {{info.Trad[0].scty.SctyQtn.prcFlcn| customNumberFormat}}%</span>
     </div>
 </div>
