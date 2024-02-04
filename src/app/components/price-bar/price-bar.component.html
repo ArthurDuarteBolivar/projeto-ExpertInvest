@@ -1,1 +1,30 @@
-<p>price-bar works!</p>
+<section class="price_container">
+    <div [routerLink]="['/acoes', item.symb]" *ngFor="let item of (b3PriceFlutuationIbov$ | async)?.SctyHghstIncrLst">
+        <span>{{item.symb}}</span>
+        <span>R${{item.SctyQtn.curPrc| customNumberFormat}}</span>
+        <span [ngClass]="{'verde': item.SctyQtn.prcFlcn > 0, 'vermelho': item.SctyQtn.prcFlcn < 0}">
+            {{item.SctyQtn.prcFlcn | customNumber}}%
+          </span>   
+    </div>
+    <div [routerLink]="['/acoes', item.symb]" *ngFor="let item of (b3PriceFlutuationIbov$ | async)?.SctyHghstDrpLst">
+        <span>{{item.symb}}</span>
+        <span>R${{item.SctyQtn.curPrc| customNumberFormat}}</span>
+        <span [ngClass]="{'verde': item.SctyQtn.prcFlcn > 0, 'vermelho': item.SctyQtn.prcFlcn < 0}">
+            {{item.SctyQtn.prcFlcn | customNumber}}%
+          </span>   
+    </div>
+    <div [routerLink]="['/fii', item.symb]" *ngFor="let item of (b3PriceFlutuation$ | async)?.SctyHghstIncrLst">
+        <span>{{item.symb}}</span>
+        <span>R${{item.SctyQtn.curPrc| customNumberFormat}}</span>
+        <span [ngClass]="{'verde': item.SctyQtn.prcFlcn > 0, 'vermelho': item.SctyQtn.prcFlcn < 0}">
+            {{item.SctyQtn.prcFlcn | customNumber}}%
+          </span>   
+    </div>
+    <div [routerLink]="['/fii', item.symb]" *ngFor="let item of (b3PriceFlutuation$ | async)?.SctyHghstDrpLst">
+        <span>{{item.symb}}</span>
+        <span>R${{item.SctyQtn.curPrc| customNumberFormat}}</span>
+        <span [ngClass]="{'verde': item.SctyQtn.prcFlcn > 0, 'vermelho': item.SctyQtn.prcFlcn < 0}">
+            {{item.SctyQtn.prcFlcn | customNumber}}%
+          </span>   
+    </div>
+</section>

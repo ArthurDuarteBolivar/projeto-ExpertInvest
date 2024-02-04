@@ -53,6 +53,7 @@ import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { PriceBarComponent } from './components/price-bar/price-bar.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     TopInfoIndiceComponent,
     SegmentoComponent,
     InvestimentoAcoesComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    PriceBarComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { Coin } from '../interface/coin';
 export class B3Service {
 
   private apiKey = '8f1cbe6277msh4681f14422d4676p11f18ajsnb8f6f7a2b037';
-  private apiUrlNews = 'https://news-api53.p.rapidapi.com/news/topics';
+  private apiUrlNews = 'https://expertinvest.com.br/api/v1/news/topics';
 
   constructor(private http: HttpClient) { }
   apiUrl: string = "https://cotacao.b3.com.br/mds/api/v1/instrumentQuotation/"
@@ -66,18 +66,12 @@ export class B3Service {
 
     const options = { headers };
 
-    return this.http.get<News[]>(`${this.apiUrlNews}/${topic}/BR?page=${page}&itemsPerPage=16`, options);
+    return this.http.get<News[]>(`${this.apiUrlNews}/${topic}/BR?page=${page}&itemsPerPage=16`);
   }
 
 
   getNewsList(page: number): Observable<News[]>{
-    const headers = new HttpHeaders({
-      'X-RapidAPI-Key': this.apiKey,
-      'X-RapidAPI-Host': 'news-api53.p.rapidapi.com',
-    });
 
-    const options = { headers };
-
-    return this.http.get<News[]>(`https://news-api53.p.rapidapi.com/news/language/BR/?page=${page}&itemsPerPage=16`, options);
+    return this.http.get<News[]>(`https://expertinvest.com.br/api/v1/news/language/BR/?page=${page}&itemsPerPage=16`);
   }
 }

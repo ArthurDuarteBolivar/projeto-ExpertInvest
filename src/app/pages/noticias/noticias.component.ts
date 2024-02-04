@@ -25,7 +25,7 @@ export class NoticiasComponent implements OnInit{
   timesSports: number = 1;
   timesScience: number = 1;
   timesHealth: number = 1;
-  isLoaded: boolean = false;
+  isLoaded: boolean = true;
 
   ngOnInit(){
     this.b3Service.getNewsList(1).subscribe(res => {

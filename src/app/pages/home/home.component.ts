@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   newNews: News[] = [] 
 
   historico!: DailyFlucutiation;
-  isLoaded: boolean = false;
+  isLoaded: boolean = true;
   dividendosFii$ = this.store.select('app').pipe(
     map(app => app.dividendosHoje)
   )

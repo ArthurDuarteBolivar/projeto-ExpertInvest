@@ -1,0 +1,61 @@
+@import "../../variaveis.scss";
+
+
+.price_container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    white-space: nowrap;
+    animation: marqueeTicker 30s linear infinite;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: marqueeTicker;
+    animation-timeline: auto;
+    animation-range-start: normal; 
+    div{
+        cursor: pointer;
+        background-color: $cor-fundo;
+        padding: 10px 5px;
+        border-right: 1px solid rgba(255,255,255,.2);
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        span{
+            margin: 0px 5px;
+            font-size: 11px;
+            line-height: 16px;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@keyframes marqueeTicker{
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(-63%,0); 
+    }
+}
+
+.verde{
+    color: green !important;
+}
+
+.vermelho{
+    color: red !important;
+}
+
+
+@media screen and (max-width: 1602px) {
+    .price_container{
+        opacity: 0;
+    }
+}
